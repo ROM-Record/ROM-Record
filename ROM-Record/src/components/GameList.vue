@@ -26,7 +26,8 @@
             `https://api.igdb.com/v4/games`,
             {
               headers: {
-                'Client-ID': keys.env.VUE_APP_IGDB_API_KEY,
+                'Client-ID': process.keys.env.VUE_APP_CLIENTID,
+                'Authorization': process.env.VUE_APP_ECRETTOKEN,
               }
             }
           );
