@@ -28,12 +28,12 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #121212; /* Dark background color */
-  font-family: Arial, sans-serif;
+  background-color: #2c9b66;
+  font-family: NewRodin;
   color: white;
 }
 .sidebar {
-  background-color: #0fa86b; /* Dark green sidebar */
+  background-color: #086942; /* Dark green sidebar */
   width: 250px;
   height: 100vh;
   position: fixed;

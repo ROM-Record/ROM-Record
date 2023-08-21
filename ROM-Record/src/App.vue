@@ -22,6 +22,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <style scoped>
 h1{
+  font-family: DelaGothicOne;
   font-size: 24px;
   color: white; /* Set the color for the h1 */
   top: 40px;
@@ -35,6 +36,7 @@ header {
   top: 0;
   right: 0;
   width: auto;
+  background-color: rgb(44, 155, 102);
 }
 .wrapper {
   display: flex;
@@ -98,5 +100,28 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
+}
+</style>
+
+<style>
+
+
+@font-face {
+  font-family: 'NewRodin';
+  src: url('assets/FOT-NewRodin Pro B.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DelaGothicOne';
+  src: url('assets/DelaGothicOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#new-font{
+  font-family: 'NewRodin';
+  font-family: 'DelaGothicOne';
 }
 </style>
