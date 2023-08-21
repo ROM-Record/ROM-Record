@@ -27,7 +27,7 @@
             {
               headers: {
                 'Client-ID': process.keys.env.VUE_APP_CLIENTID,
-                'Authorization': process.env.VUE_APP_ECRETTOKEN,
+                'Authorization': process.env.VUE_APP_SECRETTOKEN,
               }
             }
           );
