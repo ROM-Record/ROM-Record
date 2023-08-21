@@ -1,18 +1,18 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
+  
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
+      
       <nav>
+        <h1>ROM-Record</h1>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/Dashboard">Dashboard</RouterLink>
       </nav>
     </div>
   </header>
@@ -21,9 +21,25 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style scoped>
+h1{
+  font-size: 24px;
+  color: white; /* Set the color for the h1 */
+  top: 40px;
+  margin-right: 240px; /* Push h1 to the left */
+  align-items: center;
+}
+
 header {
   line-height: 1.5;
-  max-height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: auto;
+}
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .logo {
@@ -34,6 +50,7 @@ header {
 nav {
   width: 100%;
   font-size: 12px;
+  white-space: nowrap;
   text-align: center;
   margin-top: 2rem;
 }
@@ -77,7 +94,7 @@ nav a:first-of-type {
     text-align: left;
     margin-left: -1rem;
     font-size: 1rem;
-
+    
     padding: 1rem 0;
     margin-top: 1rem;
   }
