@@ -1,29 +1,12 @@
-Desktop1
-Desktop2
-text
-Group10
-text
-FrameSearchBar
-content
-FrameMagnifyingglass
-text
+<script>
+
+</script>
 
 <template>
-  <div class="home-container">
-    <div class="home-desktop1">
-      <div class="home-desktop2"></div>
-      <span class="home-text">ROM Record</span>
-      <div class="home-group10">
-        <span class="home-text1"><span>Start Timer</span></span>
-      </div>
-      <div class="home-frame-search-bar">
-        <div class="home-content">
-          <div class="home-frame-magnifyingglass"></div>
-          <span class="home-text3"><span>Search</span></span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <main>
+    <TheWelcome />
+    <h1>This is home page</h1>
+  </main>
 </template>
 
 <script>
