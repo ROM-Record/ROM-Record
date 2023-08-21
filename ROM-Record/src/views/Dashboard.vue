@@ -49,7 +49,6 @@ body {
 }
 h1 {
   font-size: 24px;
-  margin-bottom: 20px;
 }
 .menu-item {
   margin-bottom: 10px;
