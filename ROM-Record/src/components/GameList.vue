@@ -44,6 +44,8 @@
             } catch (error) {
                 console.error(error);
                 this.error = true;
+            } finally {
+                this.loading = false;
             }
         },
 
@@ -64,6 +66,8 @@
             } catch (error) {
                 console.error(error);
                 this.error = true;
+            } finally {
+                this.loading = false;
             }
         }
     }
