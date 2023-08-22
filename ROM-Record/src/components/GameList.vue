@@ -36,8 +36,8 @@
         async fetchTwitchAuth(){
             try {
                 const response = await axios.get(
-                    'https://id.twitch.tv/oauth2/token?client_id=' + process.env.VUE_APP_CLIENTID
-                    + '&client_secret=' + process.env.VUE_APP_SECRET 
+                    'https://id.twitch.tv/oauth2/token?client_id=' + import.meta.env.VUE_APP_CLIENTID
+                    + '&client_secret=' + import.meta.env.VUE_APP_SECRET 
                     + '&grant_type=client_credentials'
                 );
             useAuthStore().updateAuthToken(response.data.access_token); 
@@ -57,7 +57,7 @@
                 `https://api.igdb.com/v4/games`,
                 {
                 headers: {
-                    'Client-ID': process.env.VUE_APP_CLIENTID,
+                    'Client-ID': import.meta.env.VUE_APP_CLIENTID,
                     'Authorization': 'Bearer ' + useAuthStore().authToken,
                     }
                 }
