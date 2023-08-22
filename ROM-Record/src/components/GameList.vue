@@ -17,25 +17,37 @@
       };
     },
     mounted() {
-      this.fetchGames();
+        this.fetchTwitchAuth();
+        this.fetchGames();
     },
     methods: {
-      async fetchGames() {
-        try {
-          const response = await axios.get(
-            `https://api.igdb.com/v4/games`,
-            {
-              headers: {
-                'Client-ID': process.keys.env.VUE_APP_CLIENTID,
-                'Authorization': process.env.VUE_APP_SECRETTOKEN,
-              }
+        async fetchTwitchAuth(){
+            try {
+                const response = await axios.get(
+                    'https://id.twitch.tv/oauth2/token?client_id=' + process.keys.env.VUE_APP_CLIENTID + '&client_secret=' + process.env.VUE_APP_SECRETTOKEN + '&grant_type=client_credentials'
+            );
+            this.OAuth = response.data;
+            } catch (error) {
+                console.error(error);
             }
-          );
-          this.games = response.data;
-        } catch (error) {
-          console.error(error);
+        },
+
+        async fetchGames() {
+            try {
+            const response = await axios.get(
+                `https://api.igdb.com/v4/games`,
+                {
+                headers: {
+                    'Client-ID': process.keys.env.VUE_APP_CLIENTID,
+                    'Authorization': 'Bearer ' + this.OAuth,
+                    }
+                }
+            );
+            this.games = response.data;
+            } catch (error) {
+            console.error(error);
+            }
         }
-      }
     }
   };
   </script>
