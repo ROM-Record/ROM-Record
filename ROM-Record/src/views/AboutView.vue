@@ -5,6 +5,14 @@
 </template>
 
 <style>
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #2c9b66;
+  font-family: NewRodin;
+  color: white;
+}
+
 @media (min-width: 1024px) {
   .about {
     min-height: 100vh;
