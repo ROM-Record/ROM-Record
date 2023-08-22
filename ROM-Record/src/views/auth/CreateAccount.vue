@@ -1,10 +1,10 @@
 <template>
     <div class="auth">
-        Display Name: <input type="text" v-model.trim="name"/>
+        Display Name: <input id="name" type="text" v-model.trim="name"/>
         <br>
-        Email: <input type="text" v-model.trim="email"/>
+        Email: <input id="email" type="text" v-model.trim="email"/>
         <br>
-        Password: <input type="password" v-model.trim="pswd"/>
+        Password: <input id="pswd" type="password" v-model.trim="pswd"/>
         <br>
         <button @click="createAccount()">Create Account</button>
     </div>
@@ -29,7 +29,7 @@ export default{
         async createAccount(){
             try{
                 console.log('creating...');
-                await createUserWithEmailAndPassword(auth, this.email, this.password);
+                await createUserWithEmailAndPassword(auth, this.email, this.pswd);
                 console.log('account created!');
                 this.loggedIn = true;
                 this.hasAccount = true;

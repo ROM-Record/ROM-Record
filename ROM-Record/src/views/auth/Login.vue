@@ -5,7 +5,7 @@
             <br>
             Password: <input type="password" v-model.trim="password"/>
             <br>
-            <button @click="loggedIn()">Login</button>
+            <button @click="login()">Login</button>
         </template>
     </div>
 
@@ -31,12 +31,28 @@ export default{
             try{
                 this.notFound = false;
                 this.invalidPswd = false;
+                console.log('logging in...');
                 await signInWithEmailAndPassword(auth, this.email, this.password);
+                console.log('successfully logged in!')
                 this.loggedIn = true;
             }
             catch(e){
                 console.error('Error in login', e);
             }
+        },
+        async logout(){
+            try{
+                if(auth.currentUser){
+                    await signOut(auth);
+                    this.loggedIn = false;
+                }
+                else{
+                    console.log('no user signed in');
+                }
+            }
+             catch(err){
+                console.log('error logging out');
+             }
         }
     }
 }
