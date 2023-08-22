@@ -5,19 +5,16 @@
             <br>
             Password: <input type="password" v-model.trim="password"/>
             <br>
-            <button @click="login()">Login</button>
-        </template>
-        <template v-if="loggedIn">
-            <button @click="logout()">Logout</button>
+            <RouterLink to="/signout"><button @click="login()">Login</button></RouterLink>
+            <RouterLink to="/create-account"><button>Sign Up</button></RouterLink>
         </template>
     </div>
-
 </template>
 
 
 <script>
 import { auth } from '../../firebaseResources';
-import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 export default{
     data(){
@@ -43,22 +40,6 @@ export default{
                 console.error('Error in login', e);
             }
         },
-        async logout(){
-            try{
-                if(auth.currentUser){
-                    console.log('logging out...');
-                    await signOut(auth);
-                    console.log('Successfully logged out!')
-                    this.loggedIn = false;
-                }
-                else{
-                    console.log('no user signed in');
-                }
-            }
-             catch(err){
-                console.log('error logging out');
-             }
-        }
     }
 }
 
