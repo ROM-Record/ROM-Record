@@ -7,6 +7,9 @@
             <br>
             <button @click="login()">Login</button>
         </template>
+        <template v-if="loggedIn">
+            <button @click="logout()">Logout</button>
+        </template>
     </div>
 
 </template>
@@ -43,7 +46,9 @@ export default{
         async logout(){
             try{
                 if(auth.currentUser){
+                    console.log('logging out...');
                     await signOut(auth);
+                    console.log('Successfully logged out!')
                     this.loggedIn = false;
                 }
                 else{
