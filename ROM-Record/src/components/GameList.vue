@@ -36,13 +36,14 @@
         async fetchTwitchAuth(){
             try {
                 const response = await axios.get(
-                    'https://id.twitch.tv/oauth2/token?client_id=' + process.keys.env.VUE_APP_CLIENTID 
-                    + '&client_secret=' + process.env.VUE_APP_SECRETTOKEN 
+                    'https://id.twitch.tv/oauth2/token?client_id=' + process.env.VUE_APP_CLIENTID
+                    + '&client_secret=' + process.env.VUE_APP_SECRET 
                     + '&grant_type=client_credentials'
                 );
             useAuthStore().updateAuthToken(response.data.access_token); 
             } catch (error) {
                 console.error(error);
+                console.error(error.response);
                 this.error = true;
             } finally {
                 this.loading = false;
@@ -56,8 +57,8 @@
                 `https://api.igdb.com/v4/games`,
                 {
                 headers: {
-                    'Client-ID': process.keys.env.VUE_APP_CLIENTID,
-                    'Authorization': 'Bearer ' + authToken,
+                    'Client-ID': process.env.VUE_APP_CLIENTID,
+                    'Authorization': 'Bearer ' + useAuthStore().authToken,
                     }
                 }
             );
@@ -65,6 +66,7 @@
             this.loading = false;
             } catch (error) {
                 console.error(error);
+                console.error(error.response);
                 this.error = true;
             } finally {
                 this.loading = false;
