@@ -21,6 +21,8 @@
         this.fetchGames();
     },
     methods: {
+        //fetch on initial login
+        //run on initial page load, put OAuth in a store
         async fetchTwitchAuth(){
             try {
                 const response = await axios.get(
