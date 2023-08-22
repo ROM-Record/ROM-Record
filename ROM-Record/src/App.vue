@@ -22,6 +22,7 @@ function filteredList() {
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/Dashboard">Dashboard</RouterLink>
+        <RouterLink to="/Sign up">Sign Up</RouterLink>
 
         <input type="text" v-model="input" placeholder="Search" />
         <div class="item dummy" v-for="dummy in filteredList()" :key="dummy">
