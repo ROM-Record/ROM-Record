@@ -58,7 +58,7 @@
                 {
                 headers: {
                     'Client-ID': import.meta.env.VUE_APP_CLIENTID,
-                    'Authorization': 'Bearer ' + useAuthStore().authToken,
+                    'Authorization': 'Bearer ' + useAuthStore().authenticatedToken,
                     }
                 }
             );
