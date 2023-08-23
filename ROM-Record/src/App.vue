@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import SearchBar from '../src/components/SearchBar.vue'
+import GameRecord from '../src/components/GameRecords.vue'
 </script>
 
 <template>
@@ -14,7 +15,7 @@ import SearchBar from '../src/components/SearchBar.vue'
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/Dashboard">Dashboard</RouterLink>
-        <SearchBar/>
+        <GameRecord/>
       </nav>
     </div>
   </header>
