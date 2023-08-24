@@ -5,17 +5,17 @@ export const useAuthStore = defineStore({
     state: () => ({
         displayName: null,
         email: null,
-        pswd: null
+        uid: null
     }),
     getters:{
         getDisplayName: (state) => { state.displayName; },
         getEmail: (state) => { state.email; }
     },
     actions:{
-        addUser(name, email, pswd){
+        addUser(name, email, uid){
             this.displayName = name;
             this.email = email;
-            this.pswd = pswd;
+            this.uid = uid;
         }
     }
 

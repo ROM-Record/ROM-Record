@@ -12,7 +12,7 @@
         <template v-if="loggedIn">
            Account created successfully! 
            <br>
-           <RouterLink to="/login">Please proceed to the login page to login!</RouterLink>
+           <RouterLink to="/auth">Please proceed to the login page to login!</RouterLink>
         </template>
     </div>
 </template>

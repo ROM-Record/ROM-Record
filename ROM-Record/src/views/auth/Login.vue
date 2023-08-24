@@ -5,8 +5,12 @@
             <br>
             Password: <input type="password" v-model.trim="password"/>
             <br>
-            <RouterLink to="/signout"><button @click="login()">Login</button></RouterLink>
+            <button @click="login()">Login</button>
             <RouterLink to="/create-account"><button>Sign Up</button></RouterLink>
+        </template>
+        <template v-if="loggedIn">
+            <!--button @click="logout()">Log Out</button>-->
+            <button @click="logout()">Sign Out</button>
         </template>
     </div>
 </template>
@@ -14,7 +18,9 @@
 
 <script>
 import { auth } from '../../firebaseResources';
-import { signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from 'firebase/auth';
+import { signInWithEmailAndPassword, signOut, setPersistence, browserLocalPersistence, onAuthStateChanged } from 'firebase/auth';
+import { useAuthStore } from '../../stores/authStore';
+import { mapStores } from 'pinia';
 
 export default{
     data(){
@@ -26,6 +32,9 @@ export default{
             loggedIn: false,
         }
     },
+    computed:{
+        ...mapStores(useAuthStore),
+    },
     methods:{
         async login(){
             try{
@@ -36,11 +45,28 @@ export default{
                 await signInWithEmailAndPassword(auth, this.email, this.password);
                 console.log('successfully logged in!')
                 this.loggedIn = true;
+                
             }
             catch(e){
                 console.error('Error in login', e);
             }
         },
+        async logout(){
+            try{
+                if(auth.currentUser){
+                    console.log('logging out...');
+                    await signOut(auth);
+                    console.log('Successfully logged out!')
+                    this.loggedIn = false;
+                }
+                else{
+                    console.log('no user signed in');
+                }
+            }
+             catch(err){
+                console.log('error logging out');
+             }
+        }
     }
 }
 
