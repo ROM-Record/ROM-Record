@@ -7,42 +7,45 @@
             <br>
             Password: <input id="pswd" type="password" v-model.trim="pswd"/>
             <br>
-            <button @click="createAccount()">Create Account</button>
+            <button @click="createAccountAndLogin()">Create Account</button>
         </template>
         <template v-if="loggedIn">
-            <RouterLink to="/signout"><button>Log Out</button></RouterLink>
+           Account created successfully! 
+           <br>
+           <RouterLink to="/login">Please proceed to the login page to login!</RouterLink>
         </template>
     </div>
 </template>
 
 
 <script>
+import { RouterLink } from 'vue-router';
 import { auth } from '../../firebaseResources';
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 export default{
-    data(){
-        return{
+    data() {
+        return {
             loggedIn: false,
             name: null,
             email: null,
             pswd: null,
-        }
+        };
     },
-    methods:{
-        async createAccount(){
-            try{
+    methods: {
+        async createAccountAndLogin() {
+            try {
                 console.log('creating...');
                 await createUserWithEmailAndPassword(auth, this.email, this.pswd);
                 console.log('account created!');
                 this.loggedIn = true;
-                //this.hasAccount = true;
                 console.log('Current user', auth.currentUser);
             }
-            catch(err){
+            catch (err) {
                 console.error('Couldn\'t create account', err);
             }
         }
-    }
+    },
+    components: { RouterLink }
 }
 </script>

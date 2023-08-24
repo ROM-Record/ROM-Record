@@ -14,7 +14,7 @@
 
 <script>
 import { auth } from '../../firebaseResources';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from 'firebase/auth';
 
 export default{
     data(){
@@ -29,6 +29,7 @@ export default{
     methods:{
         async login(){
             try{
+                setPersistence(auth, browserLocalPersistence);
                 this.notFound = false;
                 this.invalidPswd = false;
                 console.log('logging in...');
