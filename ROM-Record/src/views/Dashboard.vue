@@ -17,8 +17,6 @@
     </div>
   </div>
   <div class="content">
-    <h1>Welcome to the Dashboard</h1>
-    <p>Logistics etc some personialized info etc</p>
   </div>
 </body>
 </template>
