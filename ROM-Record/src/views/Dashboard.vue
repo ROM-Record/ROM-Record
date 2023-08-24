@@ -4,7 +4,7 @@
   <div class="sidebar">
     <h1>Dashboard</h1>
     <div class="menu-item">
-      <a href="#">Backlog</a>
+      <a href="#">Records</a>
     </div>
     <div class="menu-item">
       <a href="#">Analytics</a>

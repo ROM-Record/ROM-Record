@@ -12,13 +12,13 @@
     <div class="record-section">
         <ul>
             <li v-for="(game, index) in backlog" :key="index">
-            {{ game.title }}
             <select v-model="game.status" @change="updateStatus(index)">
                 <option value="Playing">Playing</option>
                 <option value="Want to play">Want to play</option>
                 <option value="Played">Played</option>
                 <option value="Dropped">Dropped</option>
             </select>
+            {{ game.title }}
             [Added: {{ formatDate(game.timestamp) }}]
             </li>
         </ul>
