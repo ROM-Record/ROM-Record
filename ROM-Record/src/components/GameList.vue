@@ -1,50 +1,64 @@
 <template>
-    <div>
-        <h1>Games</h1>
-        <ul v-if="loading">
-            <li>Loading...</li>
-        </ul>
-        <ul v-else>
-            <li v-for="game in games" :key="game.id">{{ game.name }}</li>
-        </ul>
-        <div v-if="error" class="error-message">
-            An error occured while fetching games.
-        </div>
+  <div>
+    <h1>Games</h1>
+    <ul v-if="loading">
+      <li>Loading...</li>
+    </ul>
+    <ul v-else>
+      <li v-for="game in games" :key="game.id">{{ game.name }}</li>
+    </ul>
+    <div v-if="error" class="error-message">
+      An error occurred while fetching games.
     </div>
+  </div>
 </template>
-  
-  <script>
-  import axios from 'axios';
-  import { useAuthStore } from '../stores/auth.js';
-  
-  export default {
-        //fetch on initial login
-        //run on initial page load, put OAuth in a store
-        //gets OAuth token needed for authorization in fetchGames()
-        
-        //call to IGDB API that gets list of games
-        var myHeaders = new Headers();
-        myHeaders.append("x-api-key", "DwqGnrnS3CbBHegC6TzA4sHNlKGnq4w79eD8vW43");
-        myHeaders.append("Content-Type", "text/plain");
 
-        var raw = "fields screenshots.url; limit 10;";
+<script>
+export default {
+  data() {
+    return {
+      loading: true,
+      error: false,
+      games: [] // Initialize games as an empty array
+    };
+  },
+  mounted() {
+    // Fetch games when the component is mounted
+    this.fetchGames();
+  },
+  methods: {
+    fetchGames() {
+      let myHeaders = new Headers();
+      myHeaders.append("x-api-key", "DwqGnrnS3CbBHegC6TzA4sHNlKGnq4w79eD8vW43");
+      myHeaders.append("Content-Type", "text/plain");
 
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: raw,
-          redirect: 'follow'
-        };
+      let raw = "fields name; limit 10;";
 
-        fetch("https://lnattp9ct5.execute-api.us-west-2.amazonaws.com/production/v4/games", requestOptions)
-          .then(response => response.text())
-          .then(result => console.log(result))
-          .catch(error => console.log('error', error));
-  };
-  </script>
+      let requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
 
-  <style>
-    .error-message {
-        color: red;
-    }
-  </style>
+      fetch("https://lnattp9ct5.execute-api.us-west-2.amazonaws.com/production/v4/games", requestOptions)
+        .then((response) => response.json()) // Parse response as JSON
+        .then((data) => {
+          this.loading = false;
+          this.games = data; // Update games data property with fetched results
+        })
+        .catch((error) => {
+          this.loading = false;
+          this.error = true;
+          console.log("error", error);
+        });
+    },
+  },
+};
+</script>
+
+<style>
+.error-message {
+  color: red;
+}
+</style>
