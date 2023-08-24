@@ -1,19 +1,19 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import SearchBar from '../src/components/SearchBar.vue'
+import GameRecord from '../src/components/GameRecords.vue'
 </script>
 
 <template>
+  
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
+      
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/gameList">GameList</RouterLink>
+        <h1>ROM-Record</h1>
+        <RouterLink to="/Dashboard">Record Yer ROMs!!</RouterLink>
+        <GameRecord/>
       </nav>
     </div>
   </header>
@@ -22,9 +22,27 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style scoped>
+h1{
+  font-family: DelaGothicOne;
+  font-size: 24px;
+  color: white; /* Set the color for the h1 */
+  right: 200px;
+}
+
 header {
-  line-height: 1.5;
-  max-height: 100vh;
+  margin: auto;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 610px;
+  /*background-color: black;*/
+  background-color: rgb(44, 155, 102);
+  text-align: center;
+}
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .logo {
@@ -34,8 +52,8 @@ header {
 
 nav {
   width: 100%;
-  font-size: 12px;
-  text-align: center;
+  font-size: 1rem;
+  white-space: nowrap;
   margin-top: 2rem;
 }
 
@@ -74,13 +92,34 @@ nav a:first-of-type {
     flex-wrap: wrap;
   }
 
-  nav {
+  /*nav {
     text-align: left;
     margin-left: -1rem;
     font-size: 1rem;
-
+    
     padding: 1rem 0;
     margin-top: 1rem;
-  }
+  }*/
+}
+</style>
+
+<style>
+@font-face {
+  font-family: 'NewRodin';
+  src: url('assets/FOT-NewRodin Pro B.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DelaGothicOne';
+  src: url('assets/DelaGothicOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#new-font{
+  font-family: 'NewRodin';
+  font-family: 'DelaGothicOne';
 }
 </style>
