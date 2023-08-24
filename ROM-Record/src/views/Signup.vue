@@ -12,6 +12,7 @@
 
         <div class="wrapper">
             <input type="text" v-model="input" placeholder="Username"/>
+            <input type="text" v-model="input" placeholder="Password"/>
         </div>
     </div>
 </template>

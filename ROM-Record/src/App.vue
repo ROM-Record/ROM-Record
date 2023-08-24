@@ -23,8 +23,8 @@ function filteredList() {
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/Dashboard">Dashboard</RouterLink>
         <RouterLink to="/Signup">Signup</RouterLink>
-      <!--  
-        !-- Beginning of search feature --
+      
+        <!-- Beginning of search feature -->
         <input type="text" v-model="input" placeholder="Search" />
         <div class="item dummy" v-for="dummy in filteredList()" :key="dummy">
           <p>{{ dummy }}</p>
@@ -32,7 +32,6 @@ function filteredList() {
         <div class="item error" v-if="input&&!filteredList().length">
           <p>No results found!</p>
         </div>
-      -->
       </nav>
     </div>
   </header>
