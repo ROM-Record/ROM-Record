@@ -11,8 +11,8 @@
         <header>Create an account!</header>
 
         <div class="wrapper">
-            <input type="text" v-model="input" placeholder="Username"/>
-            <input type="text" v-model="input" placeholder="Password"/>
+            <input type="text" v-model="username" placeholder="Username"/>
+            <input type="text" v-model="password" placeholder="Password"/>
         </div>
     </div>
 </template>

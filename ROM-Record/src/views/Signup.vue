@@ -1,8 +1,38 @@
-<!-- Signup page-->
+<!-- Signup page, should be redirected from login later -->
 
-<script setup>
+<script>
     import { ref } from "vue";
     let input = ref("");
+
+    // Fadak's code, implements firebase auth
+    import { auth } from '../firebaseResources';
+    import { createUserWithEmailAndPassword } from 'firebase/auth'
+
+    export default{
+        data(){
+            return{
+                loggedIn: false,
+                name: null,
+                email: null,
+                pswd: null,
+            }
+        },
+        methods:{
+            async createAccount(){
+                try{
+                    console.log('creating...');
+                    await createUserWithEmailAndPassword(auth, this.email, this.pswd);
+                    console.log('account created!');
+                    this.loggedIn = true;
+                    //this.hasAccount = true;
+                    console.log('Current user', auth.currentUser);
+                }
+                catch(err){
+                    console.error('Couldn\'t create account', err);
+                }
+            }
+        }
+    }
 </script>
 
 <template>
@@ -11,9 +41,10 @@
         <header>Create an account!</header>
 
         <div class="wrapper">
-            <input type="text" v-model="username" placeholder="Username"/>
+            <input type="text" v-model="name" placeholder="Username"/>
             <input type="text" v-model="email" placeholder="Email"/>
-            <input type="text" v-model="password" placeholder="Password"/>
+            <input type="text" v-model="pswd" placeholder="Password"/>
+            <button @click="createAccount()">Create Account</button>
         </div>
     </div>
 </template>

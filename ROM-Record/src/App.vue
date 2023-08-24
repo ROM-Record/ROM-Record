@@ -22,7 +22,7 @@ function filteredList() {
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/Dashboard">Dashboard</RouterLink>
-        <RouterLink to="/Signup">Signup</RouterLink>
+        <RouterLink to="/Signup">Login/Sign up</RouterLink>
       </nav>
     </div>
   </header>
