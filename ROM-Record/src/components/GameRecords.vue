@@ -15,11 +15,12 @@
                 {{ game.title }}
                 [Added: {{ formatDate(game.timestamp) }}]
                 <select v-model="game.status" @change="updateStatus(index)">
-                <option value="Playing">Playing</option>
-                <option value="Want to play">Want to play</option>
-                <option value="Played">Played</option>
-                <option value="Dropped">Dropped</option>
-            </select>
+                    <option value="Playing">Playing</option>
+                    <option value="Want to play">Want to play</option>
+                    <option value="Played">Played</option>
+                    <option value="Dropped">Dropped</option>
+                </select>
+                <button @click="removeGame(index)">Remove</button>
             </li>
         </ul>
     </div>
@@ -56,6 +57,9 @@ methods: {
         hour: 'numeric',
         minute: 'numeric'
       }).format(date);
+    },
+    removeGame(index) {
+        this.backlog.splice(index, 1);
     }
 }
 };
