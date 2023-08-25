@@ -7,7 +7,7 @@
       <a href="#">Records</a>
     </div>
     <div class="menu-item">
-      <a href="#">Login</a>
+      <a href="#">Log Out</a>
     </div>
   </div>
   <div class="content">
