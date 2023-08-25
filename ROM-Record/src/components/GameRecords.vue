@@ -45,7 +45,7 @@ methods: {
         if (this.userInput.title.trim() !== '') {
 
         //contain game entry info into a string
-        const newEntry = {
+        const newRecord = {
                 title: this.userInput.title,
                 status: this.userInput.status,
                 timestamp: new Date()
@@ -53,11 +53,10 @@ methods: {
 
         //Add game entry to firestore
         try {
-                await db.collection('users').doc('user_101').update({
-                    backlog: [...this.backlog, newEntry]
-                });
+                const userRecordList = db.collection('users').doc('user_101').collection('record');
+                await userRecordList.add(newRecord);
 
-                this.backlog.push(newEntry);
+                this.backlog.push(newRecord);
                 this.userInput.title = '';
         } catch(error) {
                 console.error('Error adding game:', error);
