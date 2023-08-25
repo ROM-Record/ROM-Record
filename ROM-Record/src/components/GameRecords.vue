@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import { db } from '../firebaseResources';
+
 export default {
 data() {
     return {
@@ -39,11 +41,28 @@ data() {
     };
 },
 methods: {
-    addGame() {
-    if (this.userInput.title.trim() !== '') {
-        this.backlog.push({ ...this.userInput, timestamp: new Date() });
-        this.userInput.title = ''; // Clear the input field
-    }
+    async addGame() {
+        if (this.userInput.title.trim() !== '') {
+
+        //contain game entry info into a string
+        const newEntry = {
+                title: this.userInput.title,
+                status: this.userInput.status,
+                timestamp: new Date()
+        };
+
+        //Add game entry to firestore
+        try {
+                await db.collection('users').doc('user_101').update({
+                    backlog: [...this.backlog, newEntry]
+                });
+
+                this.backlog.push(newEntry);
+                this.userInput.title = '';
+        } catch(error) {
+                console.error('Error adding game:', error);
+        }
+        }
     },
     updateStatus(index) {
     // Firebase update code goes here
@@ -71,5 +90,11 @@ ul {
   margin: 0;
   padding: 0;
   text-align: center;
+}
+
+.input-section {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust the gap between elements as needed */
 }
 </style>
