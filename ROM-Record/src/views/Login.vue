@@ -1,19 +1,75 @@
 <!-- Signup page-->
 
-<script setup>
+<script>
     import { ref } from "vue";
     let input = ref("");
+
+    import { auth } from '../firebaseResources';
+    import { signInWithEmailAndPassword } from 'firebase/auth';
+
+    export default{
+        data(){
+            return{
+                email: null,
+                password: null,
+                notFound: false,
+                invalidPswd: false,
+                loggedIn: false,
+            }
+        },
+        methods:{
+            async login(){
+                try{
+                    this.notFound = false;
+                    this.invalidPswd = false;
+                    console.log('logging in...');
+                    await signInWithEmailAndPassword(auth, this.email, this.password);
+                    console.log('successfully logged in!')
+                    this.loggedIn = true;
+                }
+                catch(e){
+                    console.error('Error in login', e);
+                }
+            },
+            async logout(){
+                try{
+                    if(auth.currentUser){
+                        console.log('logging out...');
+                        await signOut(auth);
+                        console.log('Successfully logged out!')
+                        this.loggedIn = false;
+                    }
+                    else{
+                        console.log('no user signed in');
+                    }
+                }
+                catch(err){
+                    console.log('error logging out');
+                }
+            },
+        }
+    }
 </script>
 
 <template>
-    <div class="Signup">
-        <title>Signup</title>
-        <header>Create an account!</header>
+    <div class="Login">
+        <template v-if="!loggedIn">
+            <title>Login</title>
 
-        <div class="wrapper">
-            <input type="text" v-model="username" placeholder="Username"/>
-            <input type="text" v-model="password" placeholder="Password"/>
-        </div>
+            <div class="wrapper">
+                <input type="text" v-model="email" placeholder="Email"/>
+                <input type="password" v-model="pswd" placeholder="Password"/>
+                <RouterLink to="/Login"><button @click="login()">Log in</button></RouterLink>
+                <RouterLink to="/Signup"><button>Sign Up</button></RouterLink>
+            </div>
+        </template>
+
+        <template v-if="loggedIn">
+            <title>Sign out</title>
+            <div class="wrapper">
+                <RouterLink to="/Login"><button @click="logout()">Sign Out</button></RouterLink>
+            </div>
+        </template>
     </div>
 </template>
 

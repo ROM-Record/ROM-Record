@@ -43,8 +43,8 @@
         <div class="wrapper">
             <input type="text" v-model="name" placeholder="Username"/>
             <input type="text" v-model="email" placeholder="Email"/>
-            <input type="text" v-model="pswd" placeholder="Password"/>
-            <button @click="createAccount()">Create Account</button>
+            <input type="password" v-model="pswd" placeholder="Password"/>
+            <RouterLink to="/Login"><button @click="createAccount()">Create Account</button></RouterLink>
         </div>
     </div>
 </template>
