@@ -4,7 +4,7 @@
   <div class="sidebar">
     <h1>Dashboard</h1>
     <div class="menu-item">
-      <a href="#">Backlog</a>
+      <a href="#">Records</a>
     </div>
     <div class="menu-item">
       <a href="#">Analytics</a>
@@ -17,8 +17,6 @@
     </div>
   </div>
   <div class="content">
-    <h1>Welcome to the Dashboard</h1>
-    <p>Logistics etc some personialized info etc</p>
   </div>
 </body>
 </template>
