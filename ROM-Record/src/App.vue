@@ -12,7 +12,7 @@ import GameRecord from '../src/components/GameRecords.vue'
       
       <nav>
         <h1>ROM-Record</h1>
-        <RouterLink to="/Dashboard">Record Yer ROMs!!</RouterLink>
+        <h2>Record Yer ROMs!!</h2>
         <GameRecord/>
       </nav>
     </div>
