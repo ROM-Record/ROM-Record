@@ -2,6 +2,8 @@
 import { RouterLink, RouterView } from 'vue-router'
 import SearchBar from '../src/components/SearchBar.vue'
 import GameRecord from '../src/components/GameRecords.vue'
+import GameList from '../src/components/GameList.vue';
+import ResultsPage from '../src/views/ResultsPage.vue';
 </script>
 
 <template>
@@ -13,6 +15,7 @@ import GameRecord from '../src/components/GameRecords.vue'
       <nav>
         <h1>ROM-Record</h1>
         <RouterLink to="/Dashboard">Record Yer ROMs!!</RouterLink>
+        <SearchBar/>
         <GameRecord/>
       </nav>
     </div>
