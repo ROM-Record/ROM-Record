@@ -1,5 +1,7 @@
 # ROM-Record
 
+Authors: [Fadak Abdullah (@fabdu013)](https://github.com/faduckie)
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
