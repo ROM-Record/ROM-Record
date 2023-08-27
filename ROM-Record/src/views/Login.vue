@@ -1,4 +1,4 @@
-<!-- Signup page-->
+<!-- Login/Logout page-->
 
 <script>
     import { ref } from "vue";
@@ -6,6 +6,7 @@
 
     import { auth } from '../firebaseResources';
     import { signInWithEmailAndPassword } from 'firebase/auth';
+    import { fetchSignInMethodsForEmail, signOut } from 'firebase/auth';
 
     export default{
         data(){
@@ -52,7 +53,7 @@
 </script>
 
 <template>
-    <div>
+    <div class="auth">
         <template v-if="!loggedIn">
             <title>Login</title>
 
