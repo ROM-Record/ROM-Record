@@ -1,9 +1,6 @@
 # DreamLog
 CS110 Product
 
-Brian Lim 
-Github: [lim-at-infinty](https://github.com/lim-at-infinity" target) 
-
 Claudia Pascual
 Authors: [Claudia Pascual (@cpascx)](https://github.com/cpascx)
 
