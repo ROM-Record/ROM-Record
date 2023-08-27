@@ -58,7 +58,7 @@
 
                 <h2>Login</h2>
                 <input type="text" v-model="email" placeholder="Email"/>
-                <input type="password" v-model="pswd" placeholder="Password"/>
+                <input type="password" v-model="password" placeholder="Password"/>
                 <RouterLink to="/Login"><button @click="login()">Log in</button></RouterLink>
                 <br>
                 <br>
