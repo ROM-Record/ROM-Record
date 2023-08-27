@@ -1,13 +1,16 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from 'vue-router';
+import { useQueryStore } from '../stores/query.js'
 
 const router = useRouter();
 let input = ref("");
+const store = useQueryStore();
 
 const handleEnter = () => {
   if (input.value.trim() !== '') {
     router.push(`/results/${encodeURIComponent(input.value)}`);
+    store.setInput(input.value);
   }
 };
 </script>
@@ -20,9 +23,6 @@ const handleEnter = () => {
     placeholder="Search"
     @keyup.enter="handleEnter"
   />
-    <!--<div class="item error" v-if="input&&!filteredList().length">
-    <p>No results found!</p>
-    </div>-->
 </template>
 
 <style>

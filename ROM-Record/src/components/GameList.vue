@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Games</h1>
     <ul v-if="loading">
       <li>Loading...</li>
     </ul>
@@ -14,6 +13,8 @@
 </template>
 
 <script>
+import { useQueryStore } from '@/stores/query'
+
 export default {
   data() {
     return {
@@ -28,11 +29,12 @@ export default {
   },
   methods: {
     fetchGames() {
+      const searchTerm = useQueryStore();
       let myHeaders = new Headers();
       myHeaders.append("x-api-key", "DwqGnrnS3CbBHegC6TzA4sHNlKGnq4w79eD8vW43");
       myHeaders.append("Content-Type", "text/plain");
 
-      let raw = "fields name; limit 10;";
+      let raw = `search \"${searchTerm.query}\"; fields name;`;
 
       let requestOptions = {
         method: "POST",
