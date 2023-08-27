@@ -5,6 +5,7 @@ Claudia Pascual
 Authors: [Claudia Pascual (@cpascx)](https://github.com/cpascx)
 
 Timothy Thomas
+Authors: [Timothy Thomas (@tthom065)](https://github.com/BlargBetaa)
 
 Authors: [Fadak Abdullah (@fabdu013)](https://github.com/faduckie)
 
