@@ -137,7 +137,12 @@ export default {
   async viewAchievements() {
     this.hideAllSections();
       try {
-        const achievementsCollection = collection(db, 'achievements');
+        const user = auth.currentUser;
+        if (!user) {
+          console.error('No user is logged in.');
+          return;
+        }
+        const achievementsCollection = collection(db, `users/${user.uid}/achievements`);
         const snapshot = await getDocs(achievementsCollection);
 
         this.achievementsData = snapshot.docs.map(doc => doc.data());
