@@ -26,9 +26,17 @@ export default {
   mounted() {
     // Fetch games when the component is mounted
     this.fetchGames();
+    this.$watch(
+      () => useQueryStore().query,
+      () => {
+        this.fetchGames();
+      }
+    );
   },
   methods: {
     fetchGames() {
+      this.loading = true; // Set loading to true before fetching
+      
       const searchTerm = useQueryStore();
       let myHeaders = new Headers();
       myHeaders.append("x-api-key", "DwqGnrnS3CbBHegC6TzA4sHNlKGnq4w79eD8vW43");
