@@ -41,7 +41,7 @@
         <h2>Games</h2>
         <ul>
           <li v-for="(games, index) in gameData" :key="index">
-            {{ games.title }} - {{ games.priority }}
+            {{ games.title }} - {{ games.priority }}- {{ games.date }}
           </li>
         </ul>
       </div>
@@ -91,7 +91,10 @@
 
 
 <script>
-
+import { auth } from '../firebaseResources';
+    import { signInWithEmailAndPassword } from 'firebase/auth';
+    import { fetchSignInMethodsForEmail, signOut } from 'firebase/auth';
+    import { useAuthStore } from '../stores/authStore';
 import Dashboard from '../views/Dashboard.vue';
 import { db } from '../firebaseResources';
 import {
@@ -147,7 +150,14 @@ export default {
     async viewGames() {
       this.hideAllSections();
       try {
-        const gameCollection = collection(db, 'game_entry');
+        // Get the currently logged-in user's uid
+        const user = auth.currentUser;
+        if (!user) {
+          console.error('No user is logged in.');
+          return;
+        }
+        const gameCollection = collection(db, `users/${user.uid}/game_entry`);
+        //const gameCollection = collection(db, 'game_entry');
         const snapshot = await getDocs(gameCollection);
 
         this.gameData = snapshot.docs.map(doc => doc.data());
@@ -190,7 +200,14 @@ export default {
     async enterGame() {
       this.hideAllSections();
       try {
-        const gameEntryCollection = collection(db, 'game_entry');
+        // Get the currently logged-in user's uid
+        const user = auth.currentUser;
+        if (!user) {
+          console.error('No user is logged in.');
+          return;
+        }
+        const gameEntryCollection = collection(db, `users/${user.uid}/game_entry`);
+        //const gameEntryCollection = collection(db, 'game_entry');
       
         this.showGameEntry = true; // Show achievements data section
         // Create a new game entry object based on the entered data
