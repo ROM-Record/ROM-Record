@@ -6,24 +6,38 @@
 
     // Fadak's code, implements firebase auth
     import { auth } from '../firebaseResources';
-    import { createUserWithEmailAndPassword } from 'firebase/auth'
+    import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+    import { useAuthStore } from "../stores/authStore";
 
     export default{
         data(){
             return{
-                loggedIn: false,
-                name: null,
-                email: null,
-                pswd: null,
+                //loggedIn: false,
+                user: {
+                    email: null,
+                    password: null,
+                    name: null,
+                },
+                authStore: useAuthStore(),
             }
         },
+        mounted(){
+                auth.onAuthStateChanged((user) =>{
+                    if(user){
+                        this.authStore.setUser(user.email);
+                    }
+                    else{
+                        this.authStore.setUser(null);
+                    }
+                })
+            },
         methods:{
             async createAccount(){
                 try{
                     console.log('creating...');
-                    await createUserWithEmailAndPassword(auth, this.email, this.pswd);
+                    await createUserWithEmailAndPassword(auth, this.user.email, this.user.password);
                     console.log('account created!');
-                    this.loggedIn = true;
+                    this.authStore.setUser(this.user);
                     //this.hasAccount = true;
                     console.log('Current user', auth.currentUser);
                 }
@@ -41,9 +55,9 @@
         <header>Create an account!</header>
 
         <div class="wrapper">
-            <input type="text" v-model="name" placeholder="Username"/>
-            <input type="text" v-model="email" placeholder="Email"/>
-            <input type="password" v-model="pswd" placeholder="Password"/>
+            <input type="text" v-model="user.name" placeholder="Username"/>
+            <input type="text" v-model="user.email" placeholder="Email"/>
+            <input type="password" v-model="user.password" placeholder="Password"/>
             <RouterLink to="/Login"><button @click="createAccount()">Create Account</button></RouterLink>
         </div>
     </div>

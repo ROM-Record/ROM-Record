@@ -16,7 +16,7 @@
                     email: null,
                     password: null,
                 },
-                loggedIn: null,
+                //loggedIn: null,
                 authStore: useAuthStore(),
             }
         },
