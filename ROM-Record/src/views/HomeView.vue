@@ -1,18 +1,8 @@
 <template>
-  <title>Dashboard</title>
-  <body>
-  <div class="sidebar">
-    <h1>Dashboard</h1>
-    <div class="menu-item">
-      <a href="#">Records</a>
-    </div>
-    <div class="menu-item">
-      <a href="#">Log Out</a>
-    </div>
-  </div>
-  <div class="content">
-  </div>
-</body>
+  <main>
+    <TheWelcome />
+    <h1>Welcome to Rom-Record!</h1>
+  </main>
 </template>
 
 <style>
