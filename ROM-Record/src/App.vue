@@ -12,6 +12,7 @@ import GameRecord from '../src/components/GameRecords.vue'
       
       <nav>
         <h1>ROM-Record</h1>
+        <RouterLink to="/Login">Account</RouterLink>
         <RouterLink to="/Dashboard">Record Yer ROMs!!</RouterLink>
         <SearchBar/>
         <GameRecord/>
@@ -35,8 +36,7 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  left: 610px;
-  /*background-color: black;*/
+  left: 38%;
   background-color: rgb(44, 155, 102);
   text-align: center;
 }

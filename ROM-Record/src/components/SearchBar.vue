@@ -44,7 +44,7 @@ display: block;
 width: 350px;
 margin: 20px auto;
 padding: 1px 45px;
-background: white url("../src/assets/search-icon.svg") no-repeat 15px center;
+background: white url("../src/assets/search-icon.svg") no-repeat 15px center; 
 background-size: 15px 15px;
 font-size: 16px;
 border: none;

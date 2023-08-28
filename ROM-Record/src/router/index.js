@@ -31,8 +31,24 @@ const router = createRouter({
       path: '/results/:query',
       name: 'Search Results',
       component: () => import('../views/ResultsPage.vue')
+    },
+    {
+      path: '/Signup',
+      name: 'Signup',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/Signup.vue')
+    },
+    {
+      path: '/Login',
+      name: 'Login',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/Login.vue')
     }
   ]
 })
 
-export default router
+export default router;
