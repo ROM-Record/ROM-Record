@@ -7,24 +7,36 @@
     import { auth } from '../firebaseResources';
     import { signInWithEmailAndPassword } from 'firebase/auth';
     import { fetchSignInMethodsForEmail, signOut } from 'firebase/auth';
+    import { useAuthStore } from '../stores/authStore';
 
     export default{
         data(){
             return{
-                email: null,
-                password: null,
-                notFound: false,
-                invalidPswd: false,
-                loggedIn: false,
+                user: {
+                    name: null,
+                    email: null,
+                    password: null,
+                },
+                loggedIn: null,
             }
         },
+        mounted(){
+                auth.onAuthStateChanged((user) =>{
+                    if(user){
+                        useAuthStore().setUser(user.email);
+                    }
+                    else{
+                        useAuthStore().setUser(null);
+                    }
+                })
+            },
         methods:{
             async login(){
                 try{
                     this.notFound = false;
                     this.invalidPswd = false;
                     console.log('logging in...');
-                    await signInWithEmailAndPassword(auth, this.email, this.password);
+                    await signInWithEmailAndPassword(auth, this.user.email, this.user.password);
                     console.log('successfully logged in!')
                     this.loggedIn = true;
                 }
@@ -58,8 +70,8 @@
             <title>Login</title>
 
                 <h2>Login</h2>
-                <input type="text" v-model="email" placeholder="Email"/>
-                <input type="password" v-model="password" placeholder="Password"/>
+                <input type="text" v-model="user.email" placeholder="Email"/>
+                <input type="password" v-model="user.password" placeholder="Password"/>
                 <button @click="login()">Log in</button>
                 <br>
                 <br>
