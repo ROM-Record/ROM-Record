@@ -13,20 +13,20 @@
         data(){
             return{
                 user: {
-                    name: null,
                     email: null,
                     password: null,
                 },
                 loggedIn: null,
+                authStore: useAuthStore(),
             }
         },
         mounted(){
                 auth.onAuthStateChanged((user) =>{
                     if(user){
-                        useAuthStore().setUser(user.email);
+                        this.authStore.setUser(user.email);
                     }
                     else{
-                        useAuthStore().setUser(null);
+                        this.authStore.setUser(null);
                     }
                 })
             },
@@ -37,8 +37,9 @@
                     this.invalidPswd = false;
                     console.log('logging in...');
                     await signInWithEmailAndPassword(auth, this.user.email, this.user.password);
+                    this.authStore.setUser(this.user);
                     console.log('successfully logged in!')
-                    this.loggedIn = true;
+                    //this.loggedIn = true;
                 }
                 catch(e){
                     console.error('Error in login', e);
@@ -49,8 +50,9 @@
                     if(auth.currentUser){
                         console.log('logging out...');
                         await signOut(auth);
+                        this.authStore.signOut();
                         console.log('Successfully logged out!')
-                        this.loggedIn = false;
+                       // this.loggedIn = false;
                     }
                     else{
                         console.log('no user signed in');
@@ -66,7 +68,7 @@
 
 <template>
     <div class="auth">
-        <template v-if="!loggedIn">
+        <template v-if="!authStore.user">
             <title>Login</title>
 
                 <h2>Login</h2>
@@ -79,7 +81,7 @@
                 <RouterLink to="/Signup"><button>Sign Up</button></RouterLink>
         </template>
 
-        <template v-if="loggedIn">
+        <template v-if="authStore.user">
             <title>Sign out</title>
                 <RouterLink to="/Login"><button @click="logout()">Sign Out</button></RouterLink>
         </template>
