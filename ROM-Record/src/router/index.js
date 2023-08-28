@@ -24,7 +24,16 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/Dashboard.vue')
-    }
+      
+    },
+    {
+      path: '/DatabaseView',
+      name: 'DatabaseView',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/DatabaseView.vue')
+    },
   ]
 })
 

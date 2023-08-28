@@ -1,25 +1,22 @@
 <template>
   <title>Dashboard</title>
   <body>
+  <nav class="dashboard">
   <div class="sidebar">
     <h1>Dashboard</h1>
     <div class="menu-item">
-      <a href="#">Backlog</a>
-    </div>
-    <div class="menu-item">
-      <a href="#">Analytics</a>
-    </div>
-    <div class="menu-item">
-      <a href="#">Reports</a>
+      <RouterLink to="/DatabaseView">Records</RouterLink>
+      <RouterView />
     </div>
     <div class="menu-item">
       <a href="#">Settings</a>
     </div>
+    <div class="menu-item">
+      <a href="#">Logout</a>
   </div>
-  <div class="content">
-    <h1>Welcome to the Dashboard</h1>
-    <p>Logistics etc some personialized info etc</p>
-  </div>
+</div>
+</nav>
+
 </body>
 </template>
 
@@ -37,19 +34,20 @@ body {
   width: 250px;
   height: 100vh;
   position: fixed;
-  top: 100px;
+  top: 150px;
   left: 20px;
   padding: 20px;
   border-radius: 10px; 
 }
 .content {
   margin-left: 250px; /* Adjust for sidebar width */
-  margin-top: 140px; /* Add space for the header */
+  margin-top: 160px; /* Add space for the header */
   padding: 20px;
 }
 h1 {
   font-size: 24px;
   margin-bottom: 20px;
+  position: center;
 }
 .menu-item {
   margin-bottom: 10px;
