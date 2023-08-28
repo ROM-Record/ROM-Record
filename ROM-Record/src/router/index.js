@@ -28,6 +28,11 @@ const router = createRouter({
       component: () => import('../views/Dashboard.vue')
     },
     {
+      path: '/results/:query',
+      name: 'Search Results',
+      component: () => import('../views/ResultsPage.vue')
+    },
+    {
       path: '/Signup',
       name: 'Signup',
       // route level code-splitting

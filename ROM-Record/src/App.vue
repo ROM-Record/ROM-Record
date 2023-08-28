@@ -14,6 +14,7 @@ import GameRecord from '../src/components/GameRecords.vue'
         <h1>ROM-Record</h1>
         <RouterLink to="/Login">Account</RouterLink>
         <RouterLink to="/Dashboard">Record Yer ROMs!!</RouterLink>
+        <SearchBar/>
         <GameRecord/>
       </nav>
     </div>
