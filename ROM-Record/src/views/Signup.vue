@@ -5,8 +5,9 @@
     let input = ref("");
 
     // Fadak's code, implements firebase auth
-    import { auth } from '../firebaseResources';
-    import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+    import { auth, db } from '../firebaseResources';
+    import { doc, setDoc } from "firebase/firestore"; 
+    import { createUserWithEmailAndPassword } from 'firebase/auth';
     import { useAuthStore } from "../stores/authStore";
 
     export default{
@@ -35,10 +36,11 @@
             async createAccount(){
                 try{
                     console.log('creating...');
-                    await createUserWithEmailAndPassword(auth, this.user.email, this.user.password);
+                    const userCredentials = await createUserWithEmailAndPassword(auth, this.user.email, this.user.password);
                     console.log('account created!');
                     this.authStore.setUser(this.user);
-                    //this.hasAccount = true;
+                    const uid = userCredentials.user.uid;
+                    await setDoc(doc(db, 'users', uid), this.user);
                     console.log('Current user', auth.currentUser);
                 }
                 catch(err){
