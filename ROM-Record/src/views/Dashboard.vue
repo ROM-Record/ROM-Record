@@ -4,7 +4,8 @@
   <div class="sidebar">
     <h1>Dashboard</h1>
     <div class="menu-item">
-      <a href="#">Records</a>
+      <RouterLink to="/DatabaseView">Records</RouterLink>
+      <RouterView />
     </div>
     <div class="menu-item">
       <a href="#">Log Out</a>
