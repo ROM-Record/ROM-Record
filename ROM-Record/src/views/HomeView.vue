@@ -1,20 +1,9 @@
-<script>
-
-</script>
-
 <template>
   <main>
     <TheWelcome />
     <h1>Welcome to Rom-Record!</h1>
   </main>
 </template>
-
-<script>
-export default {
-  name: 'Home',
-  props: {},
-}
-</script>
 
 <style>
 body {
@@ -23,5 +12,35 @@ body {
   background-color: #2c9b66;
   font-family: NewRodin;
   color: white;
+}
+.sidebar {
+  background-color: #086942; /* Dark green sidebar */
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 100px;
+  left: 20px;
+  padding: 20px;
+  border-radius: 10px; 
+}
+.content {
+  margin-left: 250px; /* Adjust for sidebar width */
+  margin-top: 140px; /* Add space for the header */
+  padding: 20px;
+}
+h1 {
+  font-size: 24px;
+}
+.menu-item {
+  margin-bottom: 10px;
+}
+.menu-item a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  display: block;
+}
+.menu-item a:hover {
+  color: #64dd17; /* Highlight color on hover */
 }
 </style>

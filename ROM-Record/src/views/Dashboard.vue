@@ -7,13 +7,7 @@
       <a href="#">Records</a>
     </div>
     <div class="menu-item">
-      <a href="#">Analytics</a>
-    </div>
-    <div class="menu-item">
-      <a href="#">Reports</a>
-    </div>
-    <div class="menu-item">
-      <a href="#">Settings</a>
+      <a href="#">Log Out</a>
     </div>
   </div>
   <div class="content">
