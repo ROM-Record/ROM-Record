@@ -5,15 +5,13 @@ import GameRecord from '../src/components/GameRecords.vue'
 </script>
 
 <template>
-  
   <header>
-
     <div class="wrapper">
-      
+      <HelloWorld msg="ROM-Records" />
       <nav>
-        <h1>ROM-Record</h1>
-        <h2>Record Yer ROMs!!</h2>
-        <GameRecord/>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/create-account">Create Account</RouterLink>
+        <RouterLink to="/auth">Login</RouterLink>
       </nav>
     </div>
   </header>
