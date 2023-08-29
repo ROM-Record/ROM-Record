@@ -18,6 +18,7 @@
                     email: null,
                     password: null,
                     name: null,
+                   // uid: null
                 },
                 //backlog: {
                 
@@ -41,8 +42,10 @@
                     console.log('creating...');
                     const userCredentials = await createUserWithEmailAndPassword(auth, this.user.email, this.user.password);
                     console.log('account created!');
-                    this.authStore.setUser(this.user);
                     const uid = userCredentials.user.uid;
+                    //this.user.uid = uid;
+                    this.authStore.setUser(this.user);
+                    
                     await setDoc(doc(db, 'users', uid), this.user);
                     //await setDoc(doc(db, 'users', uid, 'backlog', this.user.name + "\'s backlog"), this.backlog);
                     console.log('Current user', auth.currentUser);
