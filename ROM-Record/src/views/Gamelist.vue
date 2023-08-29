@@ -1,10 +1,10 @@
 <script setup>
-import SearchBar from '../src/components/SearchBar.vue'
-import GameRecord from '../src/components/GameRecords.vue'
+import SearchBar from '../../src/components/SearchBar.vue'
+import GameRecord from '../../src/components/GameRecords.vue'
 </script>
 
 <template>
-  
+
     <header>
   
       <div class="wrapper">
