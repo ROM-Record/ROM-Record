@@ -1,11 +1,6 @@
 <template>
 <div>
     <div class="input-section">
-        <select v-model="userInput.status">
-            <option value="Playing">Playing</option>
-            <option value="Want to play">Want to play</option>
-            <option value="Played">Played</option>
-        </select>
         <button @click="addGame">Add</button>
     </div>
     <div class="record-section">
@@ -19,7 +14,8 @@
                     <option value="Played">Played</option>
                     <option value="Dropped">Dropped</option>
                 </select>
-                <button @click="removeGame(index)">Remove</button>
+                <div class='child'><Stopwatch @timeRecorded="handleTimeRecorded" /></div>
+                <button @click="removeGame(index)">Remove Entry</button>
             </li>
         </ul>
     </div>
@@ -27,27 +23,47 @@
 </template>
 
 <script>
+import Stopwatch from '../components/Stopwatch.vue';
+import { doc, setDoc, deleteDoc } from 'firebase/firestore';
+import { db, auth } from '../firebaseResources';
+
 export default {
+props:{
+    gameName: String,
+    igId: String,
+},
+components: {
+    Stopwatch
+},
 data() {
     return {
     userInput: {
         title: '',
-        status: 'Want to play'
+        date: null,
+        status: 'Want to play',
+        igdbID: '',
     },
     backlog: []
     };
 },
 methods: {
-    addGame() {
-    if (this.userInput.title.trim() !== '') {
-        this.backlog.push({ ...this.userInput, timestamp: new Date() });
-        this.userInput.title = ''; // Clear the input field
-    }
-    },
-    updateStatus(index) {
-    // Firebase update code goes here
-    this.backlog[index].status = this.backlog[index].status;
-    },
+        async addGame() {
+            if (this.gameName.trim() !== '') {
+                console.log(`Logging game: ${this.gameName}`); 
+                this.userInput.title = this.gameName;
+                this.userInput.date = new Date();
+                this.userInput.igdbID = this.igId;
+                const uid = auth.currentUser.uid;
+                //console.log(this.igId);
+                await setDoc(doc(db, 'users', uid, 'backlog', this.userInput.title), this.userInput);
+                console.log('added ' + this.userInput.title);
+            }
+        },
+        async updateStatus(index) {
+            // Firebase update code goes here
+            this.userInput.status = index;
+            await setDoc(doc(db, 'users', uid, 'backlog', this.userInput.title), this.userInput);
+        },
     formatDate(date) {
       return new Intl.DateTimeFormat('en-US', {
         year: 'numeric',
@@ -59,7 +75,11 @@ methods: {
     },
     removeGame(index) {
         this.backlog.splice(index, 1);
-    }
+    },
+    handleTimeRecorded(timeRecorded) {
+        this.backlog.push({ title: timeRecorded, timestamp: new Date() });
+        console.log(`Logging time: ${timeRecorded}`);
+    },
 }
 };
 </script>
