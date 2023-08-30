@@ -329,7 +329,6 @@ export default {
     margin: 0;
     padding: 0;
     /*background-color: #121212; /* Dark background color */
-    font-family: Arial, sans-serif;
     color: white; 
   }
 }
