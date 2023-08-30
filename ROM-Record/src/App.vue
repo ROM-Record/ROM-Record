@@ -1,9 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import SearchBar from '../src/components/SearchBar.vue'
-import GameRecord from '../src/components/GameRecords.vue'
-import Dashboard from '../src/views/Dashboard.vue'
-import Login from '../src/views/Login.vue'
 </script>
 
 <template>
@@ -14,10 +10,8 @@ import Login from '../src/views/Login.vue'
       
       <nav>
         <h1>ROM-Record</h1>
-        <RouterLink to ='Login'>Login</RouterLink>
-        <RouterLink to="/DatabaseView">Dashboard</RouterLink>
-        <SearchBar/>
-        <GameRecord/>        
+        <RouterLink to="/Login">Account</RouterLink>
+        <RouterLink to="/DatabaseView">Record Yer ROMs!!</RouterLink>
       </nav>
     </div>
   </header>
@@ -38,7 +32,7 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  left: 38%;
+  left: 68%;
   text-align: center;
 }
 .wrapper {
@@ -76,10 +70,6 @@ nav a {
 nav a:first-of-type {
   border: 0;
 }
-nav top {
-  max-height: 10px;
-}
-
 
 @media (min-width: 1024px) {
   header {

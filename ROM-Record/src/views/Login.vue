@@ -39,7 +39,6 @@
                     await signInWithEmailAndPassword(auth, this.user.email, this.user.password);
                     this.authStore.setUser(this.user);
                     console.log('successfully logged in!')
-                    this.$router.push('/dashboard');
                     //this.loggedIn = true;
                 }
                 catch(e){
@@ -82,7 +81,10 @@
                 <RouterLink to="/Signup"><button>Sign Up</button></RouterLink>
         </template>
 
-        
+        <template v-if="authStore.user">
+            <title>Sign out</title>
+                <RouterLink to="/Login"><button @click="logout()">Sign Out</button></RouterLink>
+        </template>
     </div>
 </template>
 
@@ -97,7 +99,8 @@ input {
     font-size: 16px;
     border: none;
     border-radius: 5px;
-    
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   }
 
 h2 {

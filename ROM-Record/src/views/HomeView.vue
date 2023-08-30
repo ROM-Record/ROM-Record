@@ -9,15 +9,12 @@
 body {
   margin: 0;
   padding: 0;
- 
-  background-image: linear-gradient( 0.30turn, rgb(10, 0, 75) , rgb(15, 41, 118), rgb(10, 0, 75));
-  
+  background-color: #2c9b66;
   font-family: NewRodin;
   color: white;
 }
 .sidebar {
- 
-  background-image: linear-gradient( to bottom right, rgb(24, 2, 33) , rgb(44, 37, 120));
+  background-color: #086942; /* Dark green sidebar */
   width: 250px;
   height: 100vh;
   position: fixed;
@@ -33,7 +30,6 @@ body {
 }
 h1 {
   font-size: 24px;
-  text-align: center;
 }
 .menu-item {
   margin-bottom: 10px;
@@ -45,6 +41,6 @@ h1 {
   display: block;
 }
 .menu-item a:hover {
-  color: #a601a1; /* Highlight color on hover */
+  color: #64dd17; /* Highlight color on hover */
 }
 </style>
