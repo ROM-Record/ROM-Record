@@ -10,21 +10,18 @@ import Dashboard from '../views/Dashboard.vue';
  
 
     <h1>
-  
-      <div class="wrapper">
         
         <nav>
           <SearchBar/>
           <GameRecord/>
         </nav>
-      </div>
     </h1>
   </div>
   
 </template>
 
 <style scoped>
-    .wrapper {
+    .container {
         display: flex;
         justify-content: flex-end;
         align-items: center;
