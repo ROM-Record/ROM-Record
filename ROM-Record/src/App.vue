@@ -11,7 +11,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <nav>
         <h1>ROM-Record</h1>
         <RouterLink to="/Login">Account</RouterLink>
-        <RouterLink to="/Dashboard">Record Yer ROMs!!</RouterLink>
+        <RouterLink to="/DatabaseView">Record Yer ROMs!!</RouterLink>
       </nav>
     </div>
   </header>
@@ -32,8 +32,7 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  left: 38%;
-  background-color: rgb(44, 155, 102);
+  left: 68%;
   text-align: center;
 }
 .wrapper {

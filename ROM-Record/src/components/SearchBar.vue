@@ -36,7 +36,6 @@ font-family: NewRodin;
 body {
 padding: 20px;
 min-height: 100vh;
-background-color: #2c9b66;
 }
 
 input {
