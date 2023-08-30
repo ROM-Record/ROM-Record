@@ -32,15 +32,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/Dashboard.vue'),
-      children: [
-        { path: 'EnterGames', component: EnterGames }, // Default child route
-        { path: 'Records', component: Records },
-        { path: 'Backlog', component: Backlog },
-        { path: 'ViewGames', component: ViewGames },
-        { path: 'Achievement', component: Achievement },
-        { path: 'Status', component: Status},
-        //{ path: 'component-b', component: ComponentB }
-      ]
+      
 
     },
     {
@@ -75,7 +67,72 @@ const router = createRouter({
 
      
     },
-    
+    {
+      path: '/EnterGames',
+      name: 'EnterGames',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: EnterGames,
+      
+
+     
+    },
+    {
+      path: '/Records',
+      name: 'Records',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: Records,
+      
+
+     
+    },
+    {
+      path: '/Backlog',
+      name: 'Backlog',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: Backlog,
+      
+
+     
+    },
+    {
+      path: '/ViewGames',
+      name: 'ViewGames',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: ViewGames,
+      
+
+     
+    },
+    {
+      path: '/Achievement',
+      name: 'Achievement',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: Achievement,
+      
+
+     
+    },
+    {
+      path: '/Status',
+      name: 'Status',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: Status,
+      
+
+     
+    }
   ]
 })
 

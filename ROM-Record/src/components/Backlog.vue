@@ -132,14 +132,7 @@
   
     }
    
-    .DatabaseView button {
-    background-color: #135038; /* Dark green sidebar */
-    border-width: 5px;
-    color: white; 
-    box-sizing: border-box;
-    font-size: medium; 
-    flex: 1; 
-  }
+    
   @media (min-width: 1024px) {
     .about {
       min-height: 100vh;

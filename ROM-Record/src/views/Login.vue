@@ -39,6 +39,7 @@
                     await signInWithEmailAndPassword(auth, this.user.email, this.user.password);
                     this.authStore.setUser(this.user);
                     console.log('successfully logged in!')
+                    this.$router.push('/dashboard');
                     //this.loggedIn = true;
                 }
                 catch(e){

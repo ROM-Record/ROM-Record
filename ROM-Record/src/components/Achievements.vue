@@ -6,10 +6,6 @@
      
     
       <div class="DatabaseView">
-        
-        <h1>Records</h1>
-       
-  
         <br>
           <h2>Achievements</h2>
           <ul>

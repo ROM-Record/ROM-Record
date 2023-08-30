@@ -14,12 +14,11 @@ import Login from '../src/views/Login.vue'
       
       <nav>
         <h1>ROM-Record</h1>
-        <div class="top">
         <Login/>
         <SearchBar/>
         <GameRecord/>
-      </div>
-        <Dashboard/>
+      
+        
       </nav>
     </div>
   </header>
