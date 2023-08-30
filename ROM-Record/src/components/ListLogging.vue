@@ -39,7 +39,7 @@ methods: {
     addGame() {
     if (this.gameName.trim() !== '') {
         this.backlog.push({ ...this.gameName, timestamp: new Date() });
-        this.gameName = ''; // Clear the input field
+        console.log(`Logging game: ${this.gameName}`);
     }
     },
     updateStatus(index) {
