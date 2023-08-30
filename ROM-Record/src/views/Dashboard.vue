@@ -5,10 +5,10 @@
     <h1>Dashboard</h1>
     <div class="menu-item">
       <RouterLink to="/DatabaseView">Records</RouterLink>
-      <RouterView />
     </div>
     <div class="menu-item">
-      <a href="#">Log Out</a>
+      <RouterLink to="/Gamelist">Search games</RouterLink>
+      <RouterView />
     </div>
   </div>
   <div class="content">
