@@ -1,35 +1,40 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from 'vue-router';
+import { useQueryStore } from '../stores/query.js'
+
+const router = useRouter();
 let input = ref("");
-const dummies = ["apple", "banana", "orange"];
-function filteredList() {
-  return dummies.filter((dummy) =>
-    dummy.toLowerCase().includes(input.value.toLowerCase())
-  );
-}
+const store = useQueryStore();
+
+const handleEnter = () => {
+  if (input.value.trim() !== '') {
+    router.push(`/results/${encodeURIComponent(input.value)}`);
+    store.setInput(input.value);
+  }
+};
 </script>
 
 <template>
-    <input type="text" v-model="input" placeholder="Search" />
-    <div class="item dummy" v-for="dummy in filteredList()" :key="dummy">
-    <p>{{ dummy }}</p>
-    </div>
-    <div class="item error" v-if="input&&!filteredList().length">
-    <p>No results found!</p>
-    </div>
+    
+  <input
+    type="text"
+    v-model="input"
+    placeholder="Search"
+    @keyup.enter="handleEnter"
+  />
 </template>
 
 <style>
 * {
 padding: 0;
 margin: 0;
-box-sizing: border-box;
 font-family: NewRodin;
 }
 
 body {
 padding: 20px;
-min-height: 100vh;
+max-height: 100vh;
 background-color: rgb(234, 242, 255);
 }
 
@@ -43,8 +48,6 @@ background-size: 15px 15px;
 font-size: 16px;
 border: none;
 border-radius: 5px;
-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .item {

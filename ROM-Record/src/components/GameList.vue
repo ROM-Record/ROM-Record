@@ -1,11 +1,14 @@
 <template>
   <div>
-    <h1>Games</h1>
     <ul v-if="loading">
       <li>Loading...</li>
     </ul>
     <ul v-else>
-      <li v-for="game in games" :key="game.id">{{ game.name }}</li>
+      <li v-for="game in games" :key="game.id">
+        {{ game.name }}
+        <ListLogging/>
+        <Stopwatch/>
+      </li>
     </ul>
     <div v-if="error" class="error-message">
       An error occurred while fetching games.
@@ -14,7 +17,15 @@
 </template>
 
 <script>
+import ListLogging from '../components/ListLogging.vue';
+import Stopwatch from '../components/Stopwatch.vue';
+import { useQueryStore } from '@/stores/query'
+
 export default {
+  components: {
+    ListLogging,
+    Stopwatch
+  },
   data() {
     return {
       loading: true,
@@ -25,14 +36,23 @@ export default {
   mounted() {
     // Fetch games when the component is mounted
     this.fetchGames();
+    this.$watch(
+      () => useQueryStore().query,
+      () => {
+        this.fetchGames();
+      }
+    );
   },
   methods: {
     fetchGames() {
+      this.loading = true; // Set loading to true before fetching
+      
+      const searchTerm = useQueryStore();
       let myHeaders = new Headers();
       myHeaders.append("x-api-key", "DwqGnrnS3CbBHegC6TzA4sHNlKGnq4w79eD8vW43");
       myHeaders.append("Content-Type", "text/plain");
 
-      let raw = "fields name; limit 10;";
+      let raw = `search \"${searchTerm.query}\"; fields name;`;
 
       let requestOptions = {
         method: "POST",

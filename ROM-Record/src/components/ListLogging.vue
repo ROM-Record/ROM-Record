@@ -1,7 +1,6 @@
 <template>
 <div>
     <div class="input-section">
-        <input v-model="userInput.title" placeholder="Add game manually" />
         <select v-model="userInput.status">
             <option value="Playing">Playing</option>
             <option value="Want to play">Want to play</option>
