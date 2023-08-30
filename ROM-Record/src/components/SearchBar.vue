@@ -1,22 +1,28 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from 'vue-router';
+import { useQueryStore } from '../stores/query.js'
+
+const router = useRouter();
 let input = ref("");
-const dummies = ["apple", "banana", "orange"];
-function filteredList() {
-  return dummies.filter((dummy) =>
-    dummy.toLowerCase().includes(input.value.toLowerCase())
-  );
-}
+const store = useQueryStore();
+
+const handleEnter = () => {
+  if (input.value.trim() !== '') {
+    router.push(`/results/${encodeURIComponent(input.value)}`);
+    store.setInput(input.value);
+  }
+};
 </script>
 
 <template>
-    <input type="text" v-model="input" placeholder="Search" />
-    <div class="item dummy" v-for="dummy in filteredList()" :key="dummy">
-    <p>{{ dummy }}</p>
-    </div>
-    <div class="item error" v-if="input&&!filteredList().length">
-    <p>No results found!</p>
-    </div>
+    
+  <input
+    type="text"
+    v-model="input"
+    placeholder="Search"
+    @keyup.enter="handleEnter"
+  />
 </template>
 
 <style>

@@ -28,6 +28,11 @@ const router = createRouter({
       component: () => import('../views/Dashboard.vue')
     },
     {
+      path: '/results/:query',
+      name: 'Search Results',
+      component: () => import('../views/ResultsPage.vue')
+    },
+    {
       path: '/Signup',
       name: 'Signup',
       // route level code-splitting
@@ -42,6 +47,14 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/Login.vue')
+    },
+    {
+      path: '/DatabaseView',
+      name: 'DatabaseView',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/DatabaseView.vue')
     }
   ]
 })
