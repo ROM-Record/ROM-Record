@@ -7,7 +7,6 @@
       <li class='parent grid' v-for="game in games" :key="game.id">
         <div class='child'>{{ game.name }}</div>
         <div class='child'><ListLogging :gameName="game.name" /></div>
-        <div class='child'><Stopwatch/></div>
       </li>
     </ul>
     <div v-if="error" class="error-message">
@@ -18,13 +17,11 @@
 
 <script>
 import ListLogging from '../components/ListLogging.vue';
-import Stopwatch from '../components/Stopwatch.vue';
 import { useQueryStore } from '@/stores/query'
 
 export default {
   components: {
     ListLogging,
-    Stopwatch
   },
   data() {
     return {

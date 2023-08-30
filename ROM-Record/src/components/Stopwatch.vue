@@ -1,14 +1,19 @@
 <template>
-    <div>
-      <div class='parent grid' v-if="!running">
-        <button class='child' @click="startStopwatch">Start Stopwatch</button>
-        <p class='child'>{{ elapsedTime }}</p>
-      </div>
-      <div class='parent grid' v-else>
-        <button class='child' @click="stopStopwatch">Stop Stopwatch</button>
-        <p class='child'>{{ elapsedTime }}</p>
+  <div>
+    <div class="parent grid" v-if="!running">
+      <button class="child" @click="startStopwatch">Start Stopwatch</button>
+      <p class="child">{{ elapsedTime }}</p>
+      <div class="save-prompt" v-if="savePrompt">
+        <p>Do you want to save the time to your records?</p>
+        <button @click="saveTime">Yes</button>
+        <button @click="cancelSave">No</button>
       </div>
     </div>
+    <div class="parent grid" v-else>
+      <button class="child" @click="stopStopwatch">Stop Stopwatch</button>
+      <p class="child">{{ elapsedTime }}</p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -18,6 +23,8 @@ export default {
       running: false,
       startTime: 0,
       elapsedTime: '00:00:00',
+      savePrompt: false,
+      started: false,
     };
   },
   methods: {
@@ -27,8 +34,10 @@ export default {
       this.updateElapsedTime();
       document.addEventListener('keydown', this.handleKeyPress);
     },
+    
     stopStopwatch() {
       this.running = false;
+      this.savePrompt = true; // Show the save prompt
       document.removeEventListener('keydown', this.handleKeyPress);
     },
     updateElapsedTime() {
@@ -55,13 +64,36 @@ export default {
         }
       }
     },
+
+    promptSave() {
+      this.savePrompt = true;
+    },
+
+    saveTime() {
+      
+      this.$emit('timeRecorded', this.elapsedTime);
+
+      // Reset the state
+      this.savePrompt = false;
+      this.elapsedTime = '00:00:00';
+    },
+
+    cancelSave() {
+      this.savePrompt = false;
+    },
   },
 };
 </script>
+
 
 <style>
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr
+}
+
+.save-prompt {
+  margin-top: 10px;
+  text-align: center;
 }
 </style>

@@ -14,7 +14,8 @@
                     <option value="Played">Played</option>
                     <option value="Dropped">Dropped</option>
                 </select>
-                <button @click="removeGame(index)">Remove</button>
+                <div class='child'><Stopwatch @timeRecorded="handleTimeRecorded" /></div>
+                <button @click="removeGame(index)">Remove Entry</button>
             </li>
         </ul>
     </div>
@@ -22,9 +23,14 @@
 </template>
 
 <script>
+import Stopwatch from '../components/Stopwatch.vue';
+
 export default {
 props:{
     gameName: String
+},
+components: {
+    Stopwatch
 },
 data() {
     return {
@@ -57,7 +63,11 @@ methods: {
     },
     removeGame(index) {
         this.backlog.splice(index, 1);
-    }
+    },
+    handleTimeRecorded(timeRecorded) {
+        this.backlog.push({ title: timeRecorded, timestamp: new Date() });
+        console.log(`Logging time: ${timeRecorded}`);
+    },
 }
 };
 </script>
