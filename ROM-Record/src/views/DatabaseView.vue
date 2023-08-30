@@ -6,8 +6,6 @@
    
   
     <div class="DatabaseView">
-      
-      <h1>Records</h1>
       <!-- Section for Selection -->
      
       <!--<button @click="viewAchievements()">View Achievements</button>
