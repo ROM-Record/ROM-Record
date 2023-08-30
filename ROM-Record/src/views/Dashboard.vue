@@ -15,9 +15,9 @@
     <div class="menu-item">
       <RouterLink to="/EnterGames">Enter Games</RouterLink>
     </div>
-    <div class="menu-item">
-      <a href="#">Catalog</a>
-    </div>
+    <!--<div class="menu-item"> -->
+     <!-- <a href="#">Catalog</a> -->
+    <!--</div> -->
     <div class="menu-item">
       <RouterLink to="/Status">Status</RouterLink>
     </div>

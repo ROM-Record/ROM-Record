@@ -16,9 +16,7 @@ import Login from '../src/views/Login.vue'
         <h1>ROM-Record</h1>
         <Login/>
         <SearchBar/>
-        <GameRecord/>
-      
-        
+        <GameRecord/>        
       </nav>
     </div>
   </header>

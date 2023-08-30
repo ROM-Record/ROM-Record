@@ -62,6 +62,10 @@
       };
   
     },
+    created() {
+    this.viewCatalog(); // Call the method here
+    
+  },
     methods: {
     
       async viewCatalog() {

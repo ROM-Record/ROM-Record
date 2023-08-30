@@ -61,7 +61,7 @@
     data() {
       return {
         
-         date: '', // Store the entered date
+        date: '', // Store the entered date
         priority: '', // Store the entered priority
         timeplayed: '', // Store the entered timeplayed
         title:'',

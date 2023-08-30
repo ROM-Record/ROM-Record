@@ -7,25 +7,7 @@
       <div class="DatabaseView">
         
         <h1>Records</h1>
-        <!-- Section for Selection -->
        
-        <!--<button @click="viewAchievements()">View Achievements</button>
-        Display Achievements Data 
-       
-        <button @click="viewGames()">View Game</button>
-      
-        <button @click="viewCatalog()">View Catalog</button>
-        
-        <button @click="viewStatus()">View Status</button>
-       
-        button @click="viewProfile()">View Profile</button> 
-  
-        <button @click="viewGameEntry()">Enter Game</button>
-         -->
-  
-  
-       
-  
         <br>
         <div>
           <h2>Games</h2>
@@ -78,28 +60,31 @@
       };
   
     },
+    created() {
+    this.viewGames(); // Call the method here
+    
+  },
     methods: {
    
       async viewGames() {
-       
-        try {
-          // Get the currently logged-in user's uid
-          const user = auth.currentUser;
-          if (!user) {
-            console.error('No user is logged in.');
-            return;
-          }
-          const gameCollection = collection(db, `users/${user.uid}/game_entry`);
-          //const gameCollection = collection(db, 'game_entry');
-          const snapshot = await getDocs(gameCollection);
-  
-          this.gameData = snapshot.docs.map(doc => doc.data());
-          this.showGame = true; // Show achievements data section
-        } catch (error) {
-          console.error('An error occurred:', error.message);
-          console.error('Stack trace:', error.stack);
+      try {
+        // Get the currently logged-in user's uid
+        const user = auth.currentUser;
+        if (!user) {
+          console.error('No user is logged in.');
+          return;
         }
-      },
+        const gameCollection = collection(db, `users/${user.uid}/game_entry`);
+        //const gameCollection = collection(db, 'game_entry');
+        const snapshot = await getDocs(gameCollection);
+
+        this.gameData = snapshot.docs.map(doc => doc.data());
+        
+      } catch (error) {
+        console.error('An error occurred:', error.message);
+        console.error('Stack trace:', error.stack);
+      }
+    },
       
      
   

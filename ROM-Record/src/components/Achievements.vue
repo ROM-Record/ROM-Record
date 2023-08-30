@@ -6,13 +6,14 @@
      
     
       <div class="DatabaseView">
+       
         <br>
           <h2>Achievements</h2>
           <ul>
-            <li v-for="(achievement, index) in achievementsData" :key="index">
-              {{ achievement.title }} - {{ achievement.description }}
-            </li>
-          </ul>
+        <li v-for="(achievement, index) in achievementsData" :key="index">
+          {{ achievement.title }} - {{ achievement.description }}
+        </li>
+      </ul>
         </div>
         <br>
   
@@ -54,6 +55,10 @@
       };
   
     },
+    created() {
+    this.viewAchievements(); // Call the method here
+    
+  },
     methods: {
     async viewAchievements() {
       
@@ -67,7 +72,7 @@
           const snapshot = await getDocs(achievementsCollection);
   
           this.achievementsData = snapshot.docs.map(doc => doc.data());
-          this.showAchievements = true; // Show achievements data section
+          
         } catch (error) {
           console.error('An error occurred:', error.message);
           console.error('Stack trace:', error.stack);
