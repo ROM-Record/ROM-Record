@@ -8,40 +8,23 @@
       <div class="DatabaseView">
         
         <h1>Records</h1>
-        <!-- Section for Selection -->
-       
-        <!--<button @click="viewAchievements()">View Achievements</button>
-        Display Achievements Data 
-       
-        <button @click="viewGames()">View Game</button>
-      
-        <button @click="viewCatalog()">View Catalog</button>
         
-        <button @click="viewStatus()">View Status</button>
-       
-        button @click="viewProfile()">View Profile</button> 
   
-        <button @click="viewGameEntry()">Enter Game</button>
-         -->
-  
-  
-       
   
         <br>
         <div>
-          <h2>Games</h2>
+          <h2>Catalog</h2>
           <ul>
-            <li v-for="(games, index) in gameData" :key="index">
-              {{ games.title }} - {{ games.priority }}- {{ games.date }}
+            <li v-for="(catalog, index) in catalogData" :key="index">
+              {{ catalog.title }} - {{ catalog.description }} - {{ catalog.generes }}
             </li>
           </ul>
         </div>
         <br>
   
-        
-    </div>
-    </div>
   
+      </div>
+    </div>
     </template>
   
   
@@ -72,41 +55,39 @@
   
     data() {
       return {
-       
-         gameData: [],    
+         
+         catalogData: [],
          
     
       };
   
     },
     methods: {
-   
-      async viewGames() {
-       
+    
+      async viewCatalog() {
+      
         try {
-          // Get the currently logged-in user's uid
-          const user = auth.currentUser;
-          if (!user) {
-            console.error('No user is logged in.');
-            return;
-          }
-          const gameCollection = collection(db, `users/${user.uid}/game_entry`);
-          //const gameCollection = collection(db, 'game_entry');
-          const snapshot = await getDocs(gameCollection);
+          const catalogCollection = collection(db, 'catalog');
+          const snapshot = await getDocs(catalogCollection);
   
-          this.gameData = snapshot.docs.map(doc => doc.data());
-          this.showGame = true; // Show achievements data section
+          this.catalogData = snapshot.docs.map(doc => doc.data());
+          this.showCatalog = true; // Show achievements data section
         } catch (error) {
           console.error('An error occurred:', error.message);
           console.error('Stack trace:', error.stack);
         }
       },
-      
-     
+   
+  
+  
+  
+    },
+  
+  
   
   
       
-    }
+  
   
   }
   

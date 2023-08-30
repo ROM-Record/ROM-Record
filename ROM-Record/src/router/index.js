@@ -1,6 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import GameList from '../views/GameView.vue'
+import Records from '../components/Records.vue';
+import ViewGames from '../components/ViewGames.vue';
+import Backlog from '../components/Backlog.vue';
+import EnterGames from '../components/EnterGame.vue';
+import Achievement from '../components/Achievements.vue';
+import Status from '../components/Status.vue';
 
 
 const router = createRouter({
@@ -25,7 +31,17 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/Dashboard.vue')
+      component: () => import('../views/Dashboard.vue'),
+      children: [
+        { path: 'EnterGames', component: EnterGames }, // Default child route
+        { path: 'Records', component: Records },
+        { path: 'Backlog', component: Backlog },
+        { path: 'ViewGames', component: ViewGames },
+        { path: 'Achievement', component: Achievement },
+        { path: 'Status', component: Status},
+        //{ path: 'component-b', component: ComponentB }
+      ]
+
     },
     {
       path: '/results/:query',
@@ -54,48 +70,12 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/DatabaseView.vue')
+      component: () => import('../views/DatabaseView.vue'),
+      
+
+     
     },
-    {
-      path: '/Achievements',
-      name: 'Achievements',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/Achievements.vue')
-    },
-    {
-      path: '/ViewGames',
-      name: '/ViewGames',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/ViewGames.vue')
-    },
-    {
-      path: '/Status',
-      name: '/Status',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/Status.vue')
-    },
-    {
-      path: '/EnterGame',
-      name: '/EnterGame',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/EnterGame.vue')
-    },
-    {
-      path: '/Records',
-      name: '/Records',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/Records.vue')
-    },
+    
   ]
 })
 
