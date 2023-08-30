@@ -28,27 +28,40 @@
 </template>
 
 <script>
+import { doc, setDoc } from 'firebase/firestore';
+import { db, auth } from '../firebaseResources';
+import { useAuthStore } from '../stores/authStore';
+
 export default {
 data() {
     return {
-    userInput: {
-        title: '',
-        status: 'Want to play'
-    },
-    backlog: []
+        userInput: {
+            title: '',
+            date: null,
+            status: 'Want to play'
+        },
+        //backlog: []
     };
 },
 methods: {
-    addGame() {
-    if (this.userInput.title.trim() !== '') {
-        this.backlog.push({ ...this.userInput, timestamp: new Date() });
-        this.userInput.title = ''; // Clear the input field
-    }
+    async addGame() {
+        if (this.userInput.title.trim() !== '') {
+            //this.backlog.push({ ...this.userInput, timestamp: new Date() });
+            //this.userInput.title = ''; // Clear the input field
+            this.userInput.date = new Date();
+            const uid = auth.currentUser.uid;
+            console.log(auth.currentUser.uid);
+            await setDoc(doc(db, 'users', uid, 'backlog', this.userInput.title), this.userInput);
+            console.log('added ' + this.userInput.title);
+        }
     },
-    updateStatus(index) {
+    async updateStatus(index) {
     // Firebase update code goes here
-    this.backlog[index].status = this.backlog[index].status;
+        //this.backlog[index].status = this.backlog[index].status;
+        this.userInput.status = index;
+        await setDoc(doc(db, 'users', uid, 'backlog', this.userInput.title), this.userInput);
     },
+    /** 
     formatDate(date) {
       return new Intl.DateTimeFormat('en-US', {
         year: 'numeric',
@@ -60,7 +73,7 @@ methods: {
     },
     removeGame(index) {
         this.backlog.splice(index, 1);
-    }
+    }**/
 }
 };
 </script>
