@@ -10,8 +10,8 @@
       <h1>Records</h1>
       <!-- Section for Selection -->
      
-      <button @click="viewAchievements()">View Achievements</button>
-     <!-- Display Achievements Data -->
+      <!--<button @click="viewAchievements()">View Achievements</button>
+      Display Achievements Data 
      
       <button @click="viewGames()">View Game</button>
     
@@ -19,10 +19,10 @@
       
       <button @click="viewStatus()">View Status</button>
      
-      <!--button @click="viewProfile()">View Profile</button> -->
+      button @click="viewProfile()">View Profile</button> 
 
-      <button @click="enterGame()">Enter Game</button>
-   
+      <button @click="viewGameEntry()">Enter Game</button>
+       -->
 
 
       <br>
@@ -202,10 +202,18 @@ export default {
         console.error('Stack trace:', error.stack);
       }
     },
-    async enterGame() {
+ // make function for entering information and button seperate
+     async viewGameEntry(){ 
       this.hideAllSections();
+      this.showGameEntry = true; 
+       },
+
+    async enterGame() {
+  
+      
       try {
         // Get the currently logged-in user's uid
+
         const user = auth.currentUser;
         if (!user) {
           console.error('No user is logged in.');
@@ -214,7 +222,7 @@ export default {
         const gameEntryCollection = collection(db, `users/${user.uid}/game_entry`);
         //const gameEntryCollection = collection(db, 'game_entry');
       
-        this.showGameEntry = true; // Show achievements data section
+        
         // Create a new game entry object based on the entered data
         const newGameEntry = {
           date: this.date,
@@ -279,31 +287,36 @@ export default {
   padding: 60px;
   border-radius: 12px;
   color: white; /* Text color */
-  margin-left: 20px; /* Offset from dashboard */
+  
   margin-top: 200px; /* Offset from dashboard */
   box-sizing: border-box;
   flex: 1; /* Expand to fill available space */
-  min-width: 900px;
+  
+  min-width: 1000px;
   min-height: 700px;
 }
 
-.h1{
+.DatabaseView h1{
     align-items: center;
     padding-bottom: 30px;
+    margin-left: 180px;
     
 
   }
   .h2{
     align-items: center;
     padding-top: 30px;
-    margin-left: 540px;
+    margin-left: 340px;
 
   }
  
   .DatabaseView button {
   background-color: #135038; /* Dark green sidebar */
-  margin: 10px 0; /* Add spacing between buttons */
+  border-width: 5px;
   color: white; 
+  box-sizing: border-box;
+  font-size: medium; 
+  flex: 1; 
 }
 @media (min-width: 1024px) {
   .about {

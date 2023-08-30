@@ -29,13 +29,12 @@ const handleEnter = () => {
 * {
 padding: 0;
 margin: 0;
-box-sizing: border-box;
 font-family: NewRodin;
 }
 
 body {
 padding: 20px;
-min-height: 100vh;
+max-height: 100vh;
 background-color: rgb(234, 242, 255);
 }
 

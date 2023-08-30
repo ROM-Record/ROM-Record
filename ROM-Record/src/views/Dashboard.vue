@@ -4,13 +4,29 @@
   <div class="sidebar">
     <h1>Dashboard</h1>
     <div class="menu-item">
-      <RouterLink to="/DatabaseView">Records</RouterLink>
-      <RouterView />
+      <RouterLink to="/Records">Records</RouterLink>
     </div>
     <div class="menu-item">
-      <a href="#">Log Out</a>
+      <RouterLink to="/Achievements">Achievements</RouterLink>
     </div>
+    <div class="menu-item">
+      <RouterLink to="/ViewGames">View Games</RouterLink>
+    </div>
+    <div class="menu-item">
+      <RouterLink to="/EnterGame">Enter Games</RouterLink>
+    </div>
+    <div class="menu-item">
+      <RouterLink to="/Catalog">Catalog</RouterLink>
+    </div>
+    <div class="menu-item">
+      <RouterLink to="/Status">Status</RouterLink>
+    </div>
+    <div class="menu-item">
+      <RouterLink to="/Login">Logout</RouterLink>
+      <RouterView/>
+    
   </div>
+</div>
   <div class="content">
   </div>
 </body>
