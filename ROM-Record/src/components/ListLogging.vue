@@ -1,11 +1,6 @@
 <template>
 <div>
     <div class="input-section">
-        <select v-model="userInput.status">
-            <option value="Playing">Playing</option>
-            <option value="Want to play">Want to play</option>
-            <option value="Played">Played</option>
-        </select>
         <button @click="addGame">Add</button>
     </div>
     <div class="record-section">
@@ -28,6 +23,9 @@
 
 <script>
 export default {
+props:{
+    gameName: String
+},
 data() {
     return {
     userInput: {
@@ -39,9 +37,9 @@ data() {
 },
 methods: {
     addGame() {
-    if (this.userInput.title.trim() !== '') {
-        this.backlog.push({ ...this.userInput, timestamp: new Date() });
-        this.userInput.title = ''; // Clear the input field
+    if (this.gameName.trim() !== '') {
+        this.backlog.push({ ...this.gameName, timestamp: new Date() });
+        this.gameName = ''; // Clear the input field
     }
     },
     updateStatus(index) {

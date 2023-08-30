@@ -4,10 +4,10 @@
       <li>Loading...</li>
     </ul>
     <ul v-else>
-      <li v-for="game in games" :key="game.id">
-        {{ game.name }}
-        <ListLogging/>
-        <Stopwatch/>
+      <li class='parent grid' v-for="game in games" :key="game.id">
+        <div class='child'>{{ game.name }}</div>
+        <div class='child'><ListLogging :gameName="game.name" /></div>
+        <div class='child'><Stopwatch/></div>
       </li>
     </ul>
     <div v-if="error" class="error-message">
@@ -80,5 +80,10 @@ export default {
 <style>
 .error-message {
   color: red;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr
 }
 </style>

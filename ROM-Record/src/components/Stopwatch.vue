@@ -1,13 +1,12 @@
 <template>
     <div>
-      <div v-if="!running">
-        <button @click="startStopwatch">Start</button>
+      <div class='parent grid' v-if="!running">
+        <button class='child' @click="startStopwatch">Start Stopwatch</button>
+        <p class='child'>{{ elapsedTime }}</p>
       </div>
-      <div v-else>
-        <button @click="stopStopwatch">Stop</button>
-      </div>
-      <div>
-        <p>{{ elapsedTime }}</p>
+      <div class='parent grid' v-else>
+        <button class='child' @click="stopStopwatch">Stop Stopwatch</button>
+        <p class='child'>{{ elapsedTime }}</p>
       </div>
     </div>
 </template>
@@ -59,3 +58,10 @@ export default {
   },
 };
 </script>
+
+<style>
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr
+}
+</style>
