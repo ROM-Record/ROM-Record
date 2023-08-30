@@ -6,8 +6,8 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+//import { ref, computed, onMounted } from 'vue';
+//import { useRouter } from 'vue-router';
 
 import GameList from '../components/GameList.vue';
 </script>

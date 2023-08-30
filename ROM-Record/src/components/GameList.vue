@@ -4,7 +4,11 @@
       <li>Loading...</li>
     </ul>
     <ul v-else>
-      <li v-for="game in games" :key="game.id">{{ game.name }}</li>
+      <li v-for="game in games" :key="game.id">
+        {{ game.name }}
+        <ListLogging/>
+        <Stopwatch/>
+      </li>
     </ul>
     <div v-if="error" class="error-message">
       An error occurred while fetching games.
@@ -13,9 +17,15 @@
 </template>
 
 <script>
+import ListLogging from '../components/ListLogging.vue';
+import Stopwatch from '../components/Stopwatch.vue';
 import { useQueryStore } from '@/stores/query'
 
 export default {
+  components: {
+    ListLogging,
+    Stopwatch
+  },
   data() {
     return {
       loading: true,

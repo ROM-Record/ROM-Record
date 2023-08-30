@@ -5,10 +5,10 @@
     <h1>Dashboard</h1>
     <div class="menu-item">
       <RouterLink to="/DatabaseView">Records</RouterLink>
-      <RouterView />
     </div>
     <div class="menu-item">
-      <a href="#">Log Out</a>
+      <RouterLink to="/Gamelist">Search games</RouterLink>
+      <RouterView />
     </div>
   </div>
   <div class="content">
@@ -21,7 +21,6 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #2c9b66;
   font-family: NewRodin;
   color: white;
 }
