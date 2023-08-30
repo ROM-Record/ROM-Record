@@ -40,14 +40,14 @@ import Dashboard from '../views/Dashboard.vue';
 <style>
     @font-face {
         font-family: 'NewRodin';
-        src: url('assets/FOT-NewRodin Pro B.otf') format('opentype');
+        src: url('../assets/FOT-NewRodin Pro B.otf') format('opentype');
         font-weight: normal;
         font-style: normal;
     }
 
     @font-face {
         font-family: 'DelaGothicOne';
-        src: url('assets/DelaGothicOne-Regular.ttf') format('truetype');
+        src: url('../assets/DelaGothicOne-Regular.ttf') format('truetype');
         font-weight: normal;
         font-style: normal;
     }
