@@ -14,10 +14,17 @@
        <div>
          <h2>Games</h2>
          <ul>
-           <li v-for="(games, index) in recordsData" :key="index">
-             {{ games.title }} - {{ games.status }}- {{ games.date }}
-           </li>
-         </ul>
+          <li v-for="(game, index) in recordsData" :key="index">
+            {{ game.title }} - {{ game.status }} 
+            <select v-model="game.status">
+              <option value="Playing">Playing</option>
+                    <option value="Want to play">Want to play</option>
+                    <option value="Played">Played</option>
+                    <option value="Dropped">Dropped</option>
+            </select>
+            - {{ game.date }}
+          </li>
+        </ul>
        </div>
        <br>
 
@@ -118,7 +125,7 @@
     border-radius: 12px;
     color: white; /* Text color */
     
-    margin-top: 200px; /* Offset from dashboard */
+    margin-top: 300px; /* Offset from dashboard */
     box-sizing: border-box;
     flex: 1; /* Expand to fill available space */
     
