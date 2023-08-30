@@ -82,10 +82,7 @@
                 <RouterLink to="/Signup"><button>Sign Up</button></RouterLink>
         </template>
 
-        <template v-if="authStore.user">
-            <title>Sign out</title>
-                <RouterLink to="/Login"><button @click="logout()">Sign Out</button></RouterLink>
-        </template>
+        
     </div>
 </template>
 

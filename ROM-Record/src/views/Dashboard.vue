@@ -22,7 +22,7 @@
       <RouterLink to="/Status">Status</RouterLink>
     </div>
     <div class="menu-item">
-      <RouterLink to="/Login">Logout</RouterLink>
+      <RouterLink to="/Logout">Logout</RouterLink>
       <RouterView/>
       </div>
      

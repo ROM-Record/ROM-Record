@@ -14,7 +14,7 @@ import Login from '../src/views/Login.vue'
       
       <nav>
         <h1>ROM-Record</h1>
-        <Login/>
+        <RouterLink to ='Login'>Login</RouterLink>
         <SearchBar/>
         <GameRecord/>        
       </nav>
