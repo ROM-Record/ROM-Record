@@ -22,44 +22,57 @@
 </template>
 
 <script>
+import { doc, setDoc } from 'firebase/firestore';
+import { db, auth } from '../firebaseResources';
+
 export default {
-props:{
-    gameName: String
-},
-data() {
-    return {
-    userInput: {
-        title: '',
-        status: 'Want to play'
+    props:{
+        gameName: String,
+        igId: String,
     },
-    backlog: []
-    };
-},
-methods: {
-    addGame() {
-    if (this.gameName.trim() !== '') {
-        this.backlog.push({ ...this.gameName, timestamp: new Date() });
-        console.log(`Logging game: ${this.gameName}`);
+    data() {
+        return {
+            userInput: {
+                title: '',
+                date: null,
+                status: 'Want to play',
+                igdbID: ''
+            },
+            backlog: []
+        };
+    },
+    methods: {
+        async addGame() {
+            if (this.gameName.trim() !== '') {
+                console.log(`Logging game: ${this.gameName}`); 
+                this.userInput.title = this.gameName;
+                this.userInput.date = new Date();
+                this.userInput.igdbID = this.igId;
+                const uid = auth.currentUser.uid;
+                //console.log(this.igId);
+                await setDoc(doc(db, 'users', uid, 'backlog', this.userInput.title), this.userInput);
+                console.log('added ' + this.userInput.title);
+            }
+        },
+        async updateStatus(index) {
+            // Firebase update code goes here
+            this.userInput.status = index;
+            await setDoc(doc(db, 'users', uid, 'backlog', this.userInput.title), this.userInput);
+        },
+        formatDate(date) {
+            return new Intl.DateTimeFormat('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric'
+            }).format(date);
+        },
+        removeGame(index) {
+            this.backlog.splice(index, 1);
+        }
     }
-    },
-    updateStatus(index) {
-    // Firebase update code goes here
-    this.backlog[index].status = this.backlog[index].status;
-    },
-    formatDate(date) {
-      return new Intl.DateTimeFormat('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric'
-      }).format(date);
-    },
-    removeGame(index) {
-        this.backlog.splice(index, 1);
     }
-}
-};
 </script>
 
 <style>
