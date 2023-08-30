@@ -4,10 +4,10 @@
       <li>Loading...</li>
     </ul>
     <ul v-else>
-      <li v-for="game in games" :key="game.id">
-        {{ game.name }}
-        <ListLogging/>
-        <Stopwatch/>
+      <li class='parent grid' v-for="game in games" :key="game.id">
+        <div class='child'>{{ game.name }}</div>
+        <div class='child'><ListLogging :gameName="game.name" :igId="game.id" /></div>
+        <div class='child'><Stopwatch/></div>
       </li>
     </ul>
     <div v-if="error" class="error-message">
@@ -18,13 +18,11 @@
 
 <script>
 import ListLogging from '../components/ListLogging.vue';
-import Stopwatch from '../components/Stopwatch.vue';
 import { useQueryStore } from '@/stores/query'
 
 export default {
   components: {
     ListLogging,
-    Stopwatch
   },
   data() {
     return {
@@ -80,5 +78,10 @@ export default {
 <style>
 .error-message {
   color: red;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr
 }
 </style>
