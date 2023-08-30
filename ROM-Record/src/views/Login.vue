@@ -23,7 +23,7 @@
         mounted(){
                 auth.onAuthStateChanged((user) =>{
                     if(user){
-                        this.authStore.setUser(user.email);
+                        this.authStore.setUser(user);
                     }
                     else{
                         this.authStore.setUser(null);
