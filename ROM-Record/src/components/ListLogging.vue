@@ -14,7 +14,8 @@
                     <option value="Played">Played</option>
                     <option value="Dropped">Dropped</option>
                 </select>
-                <button @click="removeGame(index)">Remove</button>
+                <div class='child'><Stopwatch @timeRecorded="handleTimeRecorded" /></div>
+                <button @click="removeGame(index)">Remove Entry</button>
             </li>
         </ul>
     </div>
@@ -24,12 +25,17 @@
 <script>
 import { doc, setDoc, deleteDoc } from 'firebase/firestore';
 import { db, auth } from '../firebaseResources';
+import Stopwatch from '../components/Stopwatch.vue';
+
 
 export default {
     props:{
         gameName: String,
         igId: String,
     },
+components: {
+    Stopwatch
+},
     data() {
         return {
             userInput: {
@@ -71,8 +77,28 @@ export default {
         /*async removeGame(index) {
             
         }*/
-        }
-    }
+    },
+    updateStatus(index) {
+    // Firebase update code goes here
+    this.backlog[index].status = this.backlog[index].status;
+    },
+    formatDate(date) {
+      return new Intl.DateTimeFormat('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric'
+      }).format(date);
+    },
+    removeGame(index) {
+        this.backlog.splice(index, 1);
+    },
+    handleTimeRecorded(timeRecorded) {
+        this.backlog.push({ title: timeRecorded, timestamp: new Date() });
+        console.log(`Logging time: ${timeRecorded}`);
+    },
+};
 </script>
 
 <style>
