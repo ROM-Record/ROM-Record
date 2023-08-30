@@ -7,7 +7,7 @@
         <ul>
             <li v-for="(game, index) in backlog" :key="index">
                 {{ game.title }}
-                [Added: {{ formatDate(game.timestamp) }}]
+               <!--- [Added: {{ formatDate(game.timestamp) }}] -->
                 <select v-model="game.status" @change="updateStatus(index)">
                     <option value="Playing">Playing</option>
                     <option value="Want to play">Want to play</option>
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, deleteDoc } from 'firebase/firestore';
 import { db, auth } from '../firebaseResources';
 
 export default {
@@ -68,10 +68,10 @@ export default {
                 minute: 'numeric'
             }).format(date);
         },
-        removeGame(index) {
-            this.backlog.splice(index, 1);
+        /*async removeGame(index) {
+            
+        }*/
         }
-    }
     }
 </script>
 
