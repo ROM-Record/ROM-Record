@@ -8,19 +8,18 @@
       <div class="DatabaseView">
         
        
-  
-  
-        <br>
-        <div>
-          <h2>Records</h2>
-          <ul>
-            <li v-for="(record, index) in recordsData" :key="index">
-              {{ record.title }} - {{ record.description }} - {{ record.generes }}
-            </li>
-          </ul>
-        </div>
-        <br>
-  
+        <h1>Records</h1>
+       
+       <br>
+       <div>
+         <h2>Games</h2>
+         <ul>
+           <li v-for="(games, index) in recordsData" :key="index">
+             {{ games.title }} - {{ games.status }}- {{ games.date }}
+           </li>
+         </ul>
+       </div>
+       <br>
 
       </div>
     </div>
@@ -61,22 +60,31 @@
       };
   
     },
+    created() {
+    this.viewBacklog(); // Call the method here
     
-    methods: {
-    
-      async viewBacklog() {
-        
-        try {
-          const recordsCollection = collection(db, 'backlog');
-          const snapshot = await getDocs(recordsCollection);
-  
-          this.recordsData = snapshot.docs.map(doc => doc.data());
-          this.showrecords = true; // Show achievements data section
-        } catch (error) {
-          console.error('An error occurred:', error.message);
-          console.error('Stack trace:', error.stack);
-        }
-      },
+  },
+  methods: {
+   
+   async viewBacklog() {
+   try {
+     // Get the currently logged-in user's uid
+     const user = auth.currentUser;
+     if (!user) {
+       console.error('No user is logged in.');
+       return;
+     }
+     const gameCollection = collection(db, `users/${user.uid}/backlog`);
+     
+     const snapshot = await getDocs(gameCollection);
+
+     this.recordsData = snapshot.docs.map(doc => doc.data());
+     console.log(this.gameData)
+   } catch (error) {
+     console.error('An error occurred:', error.message);
+     console.error('Stack trace:', error.stack);
+   }
+ },
    
   
   
