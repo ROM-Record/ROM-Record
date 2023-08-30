@@ -140,7 +140,7 @@
     padding: 60px;
     border-radius: 12px;
     color: white; /* Text color */
-    
+    margin-left: 200px;
     margin-top: 200px; /* Offset from dashboard */
     box-sizing: border-box;
     flex: 1; /* Expand to fill available space */
@@ -164,7 +164,7 @@
     }
    
     .DatabaseView button {
-    background-color: #135038; /* Dark green sidebar */
+    background-color: #dd00ca; /* Dark green sidebar */
     border-width: 5px;
     color: white; 
     box-sizing: border-box;

@@ -38,7 +38,6 @@ header {
   width: 100%;
   top: 0;
   left: 38%;
-  background-color: rgb(44, 155, 102);
   text-align: center;
 }
 .wrapper {
