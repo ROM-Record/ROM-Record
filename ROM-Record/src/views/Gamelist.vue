@@ -1,11 +1,15 @@
 <script setup>
 import SearchBar from '../../src/components/SearchBar.vue'
 import GameRecord from '../../src/components/GameRecords.vue'
+import Dashboard from '../views/Dashboard.vue';
 </script>
 
 <template>
+  <div class="container">
+  <dashboard></dashboard>
+ 
 
-    <header>
+    <h1>
   
       <div class="wrapper">
         
@@ -14,7 +18,8 @@ import GameRecord from '../../src/components/GameRecords.vue'
           <GameRecord/>
         </nav>
       </div>
-    </header>
+    </h1>
+  </div>
   
 </template>
 
@@ -24,7 +29,8 @@ import GameRecord from '../../src/components/GameRecords.vue'
         justify-content: flex-end;
         align-items: center;
     }
-    header .wrapper {
+    h1 .wrapper {
+        margin-top:40%;
         display: flex;
         place-items: flex-start;
         flex-wrap: wrap;
