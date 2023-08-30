@@ -10,8 +10,8 @@
       <h1>Records</h1>
       <!-- Section for Selection -->
      
-      <!--<button @click="viewAchievements()">View Achievements</button>
-      Display Achievements Data 
+      <button @click="viewAchievements()">View Achievements</button>
+     <!-- Display Achievements Data -->
      
       <button @click="viewGames()">View Game</button>
     
@@ -19,10 +19,10 @@
       
       <button @click="viewStatus()">View Status</button>
      
-      button @click="viewProfile()">View Profile</button> 
+      <!--button @click="viewProfile()">View Profile</button> -->
 
-      <button @click="viewGameEntry()">Enter Game</button>
-       -->
+      <button @click="enterGame()">Enter Game</button>
+   
 
 
       <br>
@@ -41,7 +41,7 @@
         <h2>Games</h2>
         <ul>
           <li v-for="(games, index) in gameData" :key="index">
-            {{ games.title }} - {{ games.priority }}- {{ games.date }}
+            {{ games.title }} - {{ games.priority }}
           </li>
         </ul>
       </div>
@@ -91,10 +91,7 @@
 
 
 <script>
-import { auth } from '../firebaseResources';
-    import { signInWithEmailAndPassword } from 'firebase/auth';
-    import { fetchSignInMethodsForEmail, signOut } from 'firebase/auth';
-    import { useAuthStore } from '../stores/authStore';
+
 import Dashboard from '../views/Dashboard.vue';
 import { db } from '../firebaseResources';
 import {
@@ -137,12 +134,7 @@ export default {
   async viewAchievements() {
     this.hideAllSections();
       try {
-        const user = auth.currentUser;
-        if (!user) {
-          console.error('No user is logged in.');
-          return;
-        }
-        const achievementsCollection = collection(db, `users/${user.uid}/achievements`);
+        const achievementsCollection = collection(db, 'achievements');
         const snapshot = await getDocs(achievementsCollection);
 
         this.achievementsData = snapshot.docs.map(doc => doc.data());
@@ -155,14 +147,7 @@ export default {
     async viewGames() {
       this.hideAllSections();
       try {
-        // Get the currently logged-in user's uid
-        const user = auth.currentUser;
-        if (!user) {
-          console.error('No user is logged in.');
-          return;
-        }
-        const gameCollection = collection(db, `users/${user.uid}/game_entry`);
-        //const gameCollection = collection(db, 'game_entry');
+        const gameCollection = collection(db, 'game_entry');
         const snapshot = await getDocs(gameCollection);
 
         this.gameData = snapshot.docs.map(doc => doc.data());
@@ -202,27 +187,12 @@ export default {
         console.error('Stack trace:', error.stack);
       }
     },
- // make function for entering information and button seperate
-     async viewGameEntry(){ 
-      this.hideAllSections();
-      this.showGameEntry = true; 
-       },
-
     async enterGame() {
-  
-      
+      this.hideAllSections();
       try {
-        // Get the currently logged-in user's uid
-
-        const user = auth.currentUser;
-        if (!user) {
-          console.error('No user is logged in.');
-          return;
-        }
-        const gameEntryCollection = collection(db, `users/${user.uid}/game_entry`);
-        //const gameEntryCollection = collection(db, 'game_entry');
+        const gameEntryCollection = collection(db, 'game_entry');
       
-        
+        this.showGameEntry = true; // Show achievements data section
         // Create a new game entry object based on the entered data
         const newGameEntry = {
           date: this.date,
@@ -287,36 +257,31 @@ export default {
   padding: 60px;
   border-radius: 12px;
   color: white; /* Text color */
-  
+  margin-left: 20px; /* Offset from dashboard */
   margin-top: 200px; /* Offset from dashboard */
   box-sizing: border-box;
   flex: 1; /* Expand to fill available space */
-  
-  min-width: 1000px;
+  min-width: 900px;
   min-height: 700px;
 }
 
-.DatabaseView h1{
+.h1{
     align-items: center;
     padding-bottom: 30px;
-    margin-left: 180px;
     
 
   }
   .h2{
     align-items: center;
     padding-top: 30px;
-    margin-left: 340px;
+    margin-left: 540px;
 
   }
  
   .DatabaseView button {
   background-color: #135038; /* Dark green sidebar */
-  border-width: 5px;
+  margin: 10px 0; /* Add spacing between buttons */
   color: white; 
-  box-sizing: border-box;
-  font-size: medium; 
-  flex: 1; 
 }
 @media (min-width: 1024px) {
   .about {
