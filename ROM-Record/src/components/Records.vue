@@ -22,7 +22,7 @@
                     <option value="Played">Played</option>
                     <option value="Dropped">Dropped</option>
             </select>
-            - {{ game.date }}
+            <br>
           </li>
         </ul>
        </div>
