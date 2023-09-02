@@ -1,19 +1,16 @@
-# DreamLog
-CS110 Product
+# ROM-Record
 
-Braxton Mott [BM85-Hz](https://github.com/BM85-Hz)
+## Never lose track of your games again!
 
-Brian Lim 
-Github: [Brian Lim (@lim-at-infinity)](https://github.com/lim-at-infinity") 
+https://rom-record-710f5.firebaseapp.com/
 
-Claudia Pascual
-Authors: [Claudia Pascual (@cpascx)](https://github.com/cpascx)
+Authors:
+Braxton Mott: [BM85-Hz](https://github.com/BM85-Hz)
 
-Timothy Thomas
-Authors: [Timothy Thomas (@tthom065)](https://github.com/BlargBetaa)
+Brian Lim: [Brian Lim (@lim-at-infinity)](https://github.com/lim-at-infinity") 
 
-Authors: [Fadak Abdullah (@fabdu013)](https://github.com/faduckie)
+Claudia Pascual: [Claudia Pascual (@cpascx)](https://github.com/cpascx)
 
-Initial Figma for Landing Page (WIP but can be used as a starting point)
-https://www.figma.com/file/RskrywKbrGTmd9lsjU3aYX/Untitled?type=design&node-id=0%3A1&mode=design&t=KtkDjQkopoTiv93O-1
+Timothy Thomas: [Timothy Thomas (@tthom065)](https://github.com/BlargBetaa)
 
+Fadak Abdullah: [Fadak Abdullah (@fabdu013)](https://github.com/faduckie)
